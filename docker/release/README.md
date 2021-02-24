@@ -11,13 +11,13 @@ previously created wheel as asset.
 
 
 ```
-git clone git@github.com:mundialis/actinia-gdi.git
-cd actinia-gdi
+git clone git@github.com:mundialis/actinia-metadata-plugin.git
+cd actinia-metadata-plugin
 
 tag=0.0
 credentials=mygithubuser:mygithubpw
 
-docker build --file docker/release/Dockerfile --build-arg tag=$tag --build-arg credentials=$credentials --tag actinia-gdi:build .
+docker build --file docker/release/Dockerfile --build-arg tag=$tag --build-arg credentials=$credentials --tag actinia-metadata-plugin:build .
 
-docker run --rm actinia-gdi:build
+docker run --rm actinia-metadata-plugin:build
 ```

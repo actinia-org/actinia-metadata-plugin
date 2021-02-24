@@ -31,15 +31,15 @@ from flask import make_response, jsonify
 from flask_restful import Resource
 from flask_restful_swagger_2 import swagger
 
-from actinia_gdi.apidocs import metadata
-from actinia_gdi.api.common import checkConnection
-from actinia_gdi.model.responseModels import SimpleStatusCodeResponseModel
-from actinia_gdi.core.gnosReader import getRecordsByCategory
-from actinia_gdi.core.gnosReader import getRecordByUUID, getRecordsByTags
-from actinia_gdi.core.gnosReader import getMetaByUUID, getMetaByTags
-from actinia_gdi.core.gnosParser import makeItJson
-from actinia_gdi.core.gnosWriter import update
-from actinia_gdi.resources.logging import log
+from actinia_metadata_plugin.apidocs import metadata
+from actinia_metadata_plugin.api.common import checkConnection
+from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
+from actinia_metadata_plugin.core.gnosReader import getRecordsByCategory
+from actinia_metadata_plugin.core.gnosReader import getRecordByUUID, getRecordsByTags
+from actinia_metadata_plugin.core.gnosReader import getMetaByUUID, getMetaByTags
+from actinia_metadata_plugin.core.gnosParser import makeItJson
+from actinia_metadata_plugin.core.gnosWriter import update
+from actinia_metadata_plugin.resources.logging import log
 
 
 class GnosConnection(Resource):

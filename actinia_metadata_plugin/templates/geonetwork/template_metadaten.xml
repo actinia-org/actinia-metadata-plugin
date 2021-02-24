@@ -15,7 +15,7 @@
   <gmd:contact>
       <gmd:CI_ResponsibleParty>
          <gmd:organisationName>
-            <gco:CharacterString>actinia-gdi</gco:CharacterString>
+            <gco:CharacterString>actinia-metadata-plugin</gco:CharacterString>
          </gmd:organisationName>
          <gmd:role>
             <gmd:CI_RoleCode codeListValue="originator"

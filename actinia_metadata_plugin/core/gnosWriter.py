@@ -30,14 +30,14 @@ import requests
 import xmltodict
 from xml.dom.minidom import parseString
 
-from actinia_gdi.api.common import checkConnectionWithoutResponse
-from actinia_gdi.core.common import auth
-from actinia_gdi.core.gnosReader import getRecordByUUID
-from actinia_gdi.core.gnosParser import updateXml
-from actinia_gdi.resources.config import GEONETWORK
-from actinia_gdi.resources.config import FILEUPLOAD
-from actinia_gdi.resources.logging import log
-from actinia_gdi.resources.templating import tplEnv
+from actinia_metadata_plugin.api.common import checkConnectionWithoutResponse
+from actinia_metadata_plugin.core.common import auth
+from actinia_metadata_plugin.core.gnosReader import getRecordByUUID
+from actinia_metadata_plugin.core.gnosParser import updateXml
+from actinia_metadata_plugin.resources.config import GEONETWORK
+from actinia_metadata_plugin.resources.config import FILEUPLOAD
+from actinia_metadata_plugin.resources.logging import log
+from actinia_metadata_plugin.resources.templating import tplEnv
 
 
 def create(filename):

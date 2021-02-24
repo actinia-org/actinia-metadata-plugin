@@ -26,17 +26,17 @@ __copyright__ = "Copyright 2018-2021, mundialis"
 
 import unittest
 
-from actinia_gdi.resources.cli import name, about
+from actinia_metadata_plugin.resources.cli import name, about
 
 
 class CliTest(unittest.TestCase):
 
     def test_cli_name(self):
-        assert name() == "actinia-gdi"
+        assert name() == "actinia-metadata-plugin"
 
     def test_cli_about(self):
-        t = "actinia-gdi"
+        t = "actinia-metadata-plugin"
         t = t + "\n This package communicates via HTTP"
-        t = t + "\n To start application, run 'python -m actinia_gdi.main'"
+        t = t + "\n To start application, run 'python -m actinia_metadata_plugin.main'"
 
         assert about() == t

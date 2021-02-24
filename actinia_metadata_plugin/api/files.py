@@ -32,12 +32,12 @@ from flask_restful import Resource
 from flask_restful_swagger_2 import swagger
 from werkzeug.utils import secure_filename
 
-from actinia_gdi.apidocs import files
-from actinia_gdi.resources.config import FILEUPLOAD
-from actinia_gdi.core.gnosWriter import create
-from actinia_gdi.model.responseModels import SimpleStatusCodeResponseModel
-from actinia_gdi.model.responseModels import FileUploadResponseModel
-from actinia_gdi.resources.logging import log
+from actinia_metadata_plugin.apidocs import files
+from actinia_metadata_plugin.resources.config import FILEUPLOAD
+from actinia_metadata_plugin.core.gnosWriter import create
+from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
+from actinia_metadata_plugin.model.responseModels import FileUploadResponseModel
+from actinia_metadata_plugin.resources.logging import log
 
 
 class Upload(Resource):

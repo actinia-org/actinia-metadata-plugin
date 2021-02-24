@@ -29,8 +29,8 @@ import json
 import xmltodict
 from xml.dom.minidom import parseString
 
-from actinia_gdi.model.geodata import GeodataMeta
-from actinia_gdi.resources.logging import log
+from actinia_metadata_plugin.model.geodata import GeodataMeta
+from actinia_metadata_plugin.resources.logging import log
 
 
 def makeItJson(xml):

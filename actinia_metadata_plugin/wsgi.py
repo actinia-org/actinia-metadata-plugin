@@ -1,1 +1,1 @@
-from actinia_gdi.main import app as application
+from actinia_metadata_plugin.main import app as application

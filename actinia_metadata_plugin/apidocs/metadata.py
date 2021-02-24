@@ -27,8 +27,8 @@ __license__ = "Apache-2.0"
 import os
 import json
 
-from actinia_gdi.model.responseModels import SimpleStatusCodeResponseModel
-from actinia_gdi.model.responseModels import GeodataResponseModel
+from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
+from actinia_metadata_plugin.model.responseModels import GeodataResponseModel
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))

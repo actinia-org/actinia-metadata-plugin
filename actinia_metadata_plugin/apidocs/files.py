@@ -24,7 +24,7 @@ __copyright__ = "2018-present mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-from actinia_gdi.model.responseModels import SimpleStatusCodeResponseModel
+from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
 
 upload_post_docs = {
     "summary": "Upload file.",

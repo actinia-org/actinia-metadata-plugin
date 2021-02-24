@@ -30,13 +30,13 @@ import json
 from flask import Response
 import requests
 
-from actinia_gdi.main import app
+from actinia_metadata_plugin.main import app
 
-from actinia_gdi.core.gnosReader import getRecordsByCategory
-from actinia_gdi.core.gnosReader import getRecordByUUID, getRecordsByTags
-from actinia_gdi.core.gnosReader import getMetaByUUID, getMetaByTags
-from actinia_gdi.core.gnosParser import parseMeta
-from actinia_gdi.model.regeldatei import GeodataMeta
+from actinia_metadata_plugin.core.gnosReader import getRecordsByCategory
+from actinia_metadata_plugin.core.gnosReader import getRecordByUUID, getRecordsByTags
+from actinia_metadata_plugin.core.gnosReader import getMetaByUUID, getMetaByTags
+from actinia_metadata_plugin.core.gnosParser import parseMeta
+from actinia_metadata_plugin.model.regeldatei import GeodataMeta
 
 
 class GnosApiTest(unittest.TestCase):

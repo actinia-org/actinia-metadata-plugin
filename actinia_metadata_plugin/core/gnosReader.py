@@ -28,11 +28,11 @@ import json
 
 import requests
 
-from actinia_gdi.core.common import auth
-from actinia_gdi.core.gnosParser import parseMeta
-from actinia_gdi.resources.config import GEONETWORK
-from actinia_gdi.resources.logging import log
-from actinia_gdi.resources.templating import tplEnv
+from actinia_metadata_plugin.core.common import auth
+from actinia_metadata_plugin.core.gnosParser import parseMeta
+from actinia_metadata_plugin.resources.config import GEONETWORK
+from actinia_metadata_plugin.resources.logging import log
+from actinia_metadata_plugin.resources.templating import tplEnv
 
 
 def getRecordsByTags(tags):

@@ -27,15 +27,15 @@ __license__ = "Apache-2.0"
 from flask import current_app, send_from_directory
 import werkzeug
 
-from actinia_gdi.resources.logging import log
+from actinia_metadata_plugin.resources.logging import log
 
-from actinia_gdi.api.files import Upload
-from actinia_gdi.api.metadata import GnosConnection
-from actinia_gdi.api.metadata import RawTags
-from actinia_gdi.api.metadata import RawCat
-from actinia_gdi.api.metadata import RawUuid
-from actinia_gdi.api.metadata import Tags
-from actinia_gdi.api.metadata import Uuid
+from actinia_metadata_plugin.api.files import Upload
+from actinia_metadata_plugin.api.metadata import GnosConnection
+from actinia_metadata_plugin.api.metadata import RawTags
+from actinia_metadata_plugin.api.metadata import RawCat
+from actinia_metadata_plugin.api.metadata import RawUuid
+from actinia_metadata_plugin.api.metadata import Tags
+from actinia_metadata_plugin.api.metadata import Uuid
 
 
 # endpoints loaded if run as actinia-core plugin as well as standalone app
@@ -50,7 +50,7 @@ def create_endpoints(flask_api):
             return current_app.send_static_file('index.html')
         except werkzeug.exceptions.NotFound:
             log.debug('No index.html found in static folder. Serving backup.')
-            # when actinia-gdi is installed in single mode, the swagger
+            # when actinia-metadata-plugin is installed in single mode, the swagger
             # endpoint would be "latest/api/swagger.json". As api docs exist in
             # single mode, use this fallback for plugin mode.
             return ("""<h1 style='color:red'>actinia-metadata-plugin</h1>
