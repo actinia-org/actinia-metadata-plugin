@@ -90,9 +90,9 @@ class swaggerTest(unittest.TestCase):
         app.testing = True
         self.app = app.test_client()
 
-        resp = self.app.get('/latest/api/swagger.json')
+        resp = self.app.get('/api/v1/swagger.json')
         respData = json.loads(resp.get_data(as_text=True))
 
         assert type(resp) is Response
         assert type(respData) == dict
-        assert respData["info"]["title"] == 'actinia GDI'
+        assert respData["info"]["title"] == 'actinia-metadata-plugin'

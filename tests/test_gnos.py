@@ -36,7 +36,7 @@ from actinia_metadata_plugin.core.gnosReader import getRecordsByCategory
 from actinia_metadata_plugin.core.gnosReader import getRecordByUUID, getRecordsByTags
 from actinia_metadata_plugin.core.gnosReader import getMetaByUUID, getMetaByTags
 from actinia_metadata_plugin.core.gnosParser import parseMeta
-from actinia_metadata_plugin.model.regeldatei import GeodataMeta
+from actinia_metadata_plugin.model.geodata import GeodataMeta
 
 
 class GnosApiTest(unittest.TestCase):

@@ -1,22 +1,9 @@
 version: "3"
 services:
 
-  postgis:
-    image: postgis/postgis:12-3.0-alpine
-    ports:
-      - "5555:5432"
-    environment:
-      POSTGRES_USER: actinia
-      POSTGRES_PASSWORD: actinia
-    volumes:
-      - ./postgresql_init_data:/docker-entrypoint-initdb.d
-      - ./postgresql_data:/var/lib/postgresql/data:Z
-
   actinia-metadata:
     image: actinia-metadata
     ports:
       - "5000:5000"
-    depends_on:
-      - postgis
     volumes:
       - ./actinia-metadata-data:/opt/app-root/src/config/mount
