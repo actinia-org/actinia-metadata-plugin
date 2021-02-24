@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Copyright (c) 2018-present mundialis GmbH & Co. KG
+Copyright (c) 2018-2021 mundialis GmbH & Co. KG
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ Common api methods
 """
 
 __author__ = "Carmen Tawalika"
-__copyright__ = "2018-present mundialis GmbH & Co. KG"
+__copyright__ = "2018-2021 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
@@ -125,34 +125,3 @@ geodataResponseExample = GeodataResponseModel(
     table="http://www.fao.org/ag/AGL/aglw/aquastat/watresafrica/index.stm"
 )
 GeodataResponseModel.example = geodataResponseExample
-
-
-class ExceptionTracebackModel(Schema):
-    """Response schema that contains Exception information of the called endpoint
-    in case an Exception was raised.
-
-    This information is required to debug the REST API.
-    """
-    type = 'object'
-    properties = {
-        'message': {
-            'type': 'string',
-            'description': 'The message that was send with the Exception'
-        },
-        'type': {
-            'type': 'string',
-            'description': 'The type of the Exception'
-        },
-        'traceback': {
-            'type': 'string',
-            'description': 'The full traceback of the Exception'
-        }
-    }
-    required = ["message", "type", "traceback"]
-
-    example = {
-        "message": "Error",
-        "type": "exceptions.Exception",
-        "traceback": "File \"main.py\", line 2, in <module>\n    raise" +
-                     " Exception(\"Error\")\n"
-    }

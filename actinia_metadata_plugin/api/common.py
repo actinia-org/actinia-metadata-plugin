@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Copyright (c) 2018-present mundialis GmbH & Co. KG
+Copyright (c) 2018-2021 mundialis GmbH & Co. KG
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ Common api methods
 """
 
 __author__ = "Carmen Tawalika"
-__copyright__ = "2018-present mundialis GmbH & Co. KG"
+__copyright__ = "2018-2021 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
@@ -28,7 +28,6 @@ from flask import make_response, jsonify
 
 from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
 from actinia_metadata_plugin.core import common
-from actinia_metadata_plugin.resources.config import ACTINIACORE
 from actinia_metadata_plugin.resources.config import GEONETWORK
 from actinia_metadata_plugin.resources.logging import log
 
@@ -44,11 +43,7 @@ def checkConnection(name):
       connection success or failure
     """
 
-    if name == 'actinia-core':
-        url = ACTINIACORE.url + "version"
-        name = 'actinia-core'
-        type = 'json'
-    elif name == 'geonetwork':
+    if name == 'geonetwork':
         url = GEONETWORK.csw_url
         name = 'geonetwork'
         type = 'xml'
@@ -73,11 +68,7 @@ def checkConnectionWithoutResponse(name):
       name (string): resource to test. Can be 'actinia-core' or 'geonetwork'
     """
 
-    if name == 'actinia-core':
-        url = ACTINIACORE.url + "version"
-        name = 'actinia-core'
-        type = 'json'
-    elif name == 'geonetwork':
+    if name == 'geonetwork':
         url = GEONETWORK.csw_url
         name = 'geonetwork'
         type = 'xml'
