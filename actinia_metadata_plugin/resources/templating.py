@@ -16,11 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-Setup file for actinia_metadata_plugin.
-
-This file was generated with PyScaffold 3.0.2.
-PyScaffold helps you to put up the scaffold of your new Python project.
-Learn more under: http://pyscaffold.org/
+Template loader file
 """
 
 __author__ = "Carmen Tawalika"
@@ -28,16 +24,9 @@ __copyright__ = "2018-2021 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-from setuptools import setup
+from jinja2 import Environment, PackageLoader
 
-
-def setup_package():
-    setup(setup_requires=['pyscaffold>=3.0a0,<3.1a0'],
-          packages=['actinia_metadata_plugin'],
-          package_dir={'actinia_metadata_plugin': 'actinia_metadata_plugin'},
-          include_package_data=True,
-          use_pyscaffold=True)
-
-
-if __name__ == "__main__":
-    setup_package()
+# this environment is used for all cases where individual templates are loaded
+tplEnv = Environment(
+    loader=PackageLoader('actinia_metadata_plugin', 'templates')
+)

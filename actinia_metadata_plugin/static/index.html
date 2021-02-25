@@ -1,0 +1,1177 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>actinia-metadata-plugin | API Reference</title>
+    <link rel="stylesheet" href="stylesheets/foundation.min.css" />
+    <link rel="stylesheet" href="stylesheets/spectacle.min.css" />
+    <link rel="stylesheet" href="stylesheets/actinia.css" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="javascripts/foundation.js"></script> -->
+    <script src="javascripts/spectacle.min.js"></script>
+  </head>
+  <body id="spectacle">
+    <div id="page" class="drawer-layout drawer-slide-right-large">
+      <div id="sidebar">
+        <button class="close-button" aria-label="Close menu" type="button" data-drawer-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <nav id="nav" role="navigation">
+          <h5>Topics</h5>
+          <a href="#introduction">Introduction</a>
+          <h5>Operations</h5>
+          <section>
+            <a href="#tag-File-Management">File Management</a>
+            <ul>
+              <li>
+                <a href="#operation--files-post"> Upload file. </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-GeoNetwork">GeoNetwork</a>
+            <ul>
+              <li>
+                <a href="#operation--metadata-geodata-tags--tags--get"> Get geodata object from requests to Geonetwork opensource by one or many tags. </a>
+              </li>
+              <li>
+                <a href="#operation--metadata-geodata-uuids--uuid--get"> Get geodata object from requests to Geonetwork opensource by uuid. </a>
+              </li>
+              <li>
+                <a href="#operation--metadata-raw-categories--category--get"> Requests a category from Geonetwork opensource. </a>
+              </li>
+              <li>
+                <a href="#operation--metadata-raw-tags--tags--get"> Requests one or many tags from Geonetwork opensource. </a>
+              </li>
+              <li>
+                <a href="#operation--metadata-raw-uuids--uuid--get"> Requests an uuid from Geonetwork opensource. </a>
+              </li>
+              <li>
+                <a href="#operation--metadata-test-connection-post"> Tests for active connection to Geonetwork opensource. </a>
+              </li>
+              <li>
+                <a href="#operation--metadata-test-connection-get"> Tests for active connection to Geonetwork opensource. </a>
+              </li>
+            </ul>
+          </section>
+          <h5>Schema Definitions</h5>
+          <a href="#definition-SimpleStatusCodeResponseModel"> SimpleStatusCodeResponseModel </a>
+          <a href="#definition-GeodataResponseModel"> GeodataResponseModel </a>
+        </nav>
+      </div>
+      <div id="docs" class="row collapse expanded drawer" data-drawer>
+        <button class="floating-menu-icon" type="button" data-drawer-slide="right">
+          <span class="hamburger"></span>
+        </button>
+        <div class="example-box doc-content"></div>
+        <article>
+          <h1 class="doc-title">actinia-metadata-plugin
+            <span>API Reference</span>
+          </h1>
+          <div id="introduction" data-traverse-target="introduction">
+            <div class="doc-row">
+              <div class="doc-copy">
+                <p>actinia GDI takes care of integrating actinia-core into an existing geodata infrastructure connecting clients, applications, databases, metadata and more.</p>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Schemes:
+                    <span>https, http</span>
+                  </h5>
+                  <h5>Version:
+                    <span>0.0</span>
+                  </h5>
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-File-Management" class="swagger-summary-tag" data-traverse-target="tag-File-Management">File Management</h1>
+          <div id="operation--files-post" class="operation panel" data-traverse-target="operation--files-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-File-Management">File Management</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Upload file.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/files</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>File can be uploaded, best used with
+                    <a href="https://bmvimetadaten.mundialis.de">https://bmvimetadaten.mundialis.de</a>.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/SimpleStatusCodeResponseModel">SimpleStatusCodeResponseModel</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Success or failure of connection</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"success"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-GeoNetwork" class="swagger-summary-tag" data-traverse-target="tag-GeoNetwork">GeoNetwork</h1>
+          <div id="operation--metadata-geodata-tags--tags--get" class="operation panel" data-traverse-target="operation--metadata-geodata-tags--tags--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Get geodata object from requests to Geonetwork opensource by one or many tags.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/metadata/geodata/tags/{tags}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask Geonetwork which metadata records are available for a certain tag or more tags separated by comma and returns a parsed record build from model. At the moment only the first record is returned.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">tags:
+                        <span class="prop-type">
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in path </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>One or more Geonetwork tags, comma separated</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GeodataResponseModel">GeodataResponseModel</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Modelled Search Results from Geonetwork</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"da165110-88fd-11da-a88f-000d939bc5d8"</span>,
+  <span class="hljs-attr">"bbox"</span>: [
+    <span class="hljs-number">51.1</span>,
+    <span class="hljs-number">-34.6</span>,
+    <span class="hljs-number">-17.3</span>,
+    <span class="hljs-number">38.2</span>
+  ],
+  <span class="hljs-attr">"crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::WGS 1984"</span>,
+  <span class="hljs-attr">"table"</span>: <span class="hljs-string">"http://www.fao.org/ag/AGL/aglw/aquastat/watresafrica/index.stm"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--metadata-geodata-uuids--uuid--get" class="operation panel" data-traverse-target="operation--metadata-geodata-uuids--uuid--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Get geodata object from requests to Geonetwork opensource by uuid.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/metadata/geodata/uuids/{uuid}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask Geonetwork which metadata records are available for a certain uuid and returns a parsed record build from model. At the moment only the first record is returned.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">uuid:
+                        <span class="prop-type">
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in path </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>A Geonetwork uuid from a record</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GeodataResponseModel">GeodataResponseModel</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Modelled Search Results from Geonetwork</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"da165110-88fd-11da-a88f-000d939bc5d8"</span>,
+  <span class="hljs-attr">"bbox"</span>: [
+    <span class="hljs-number">51.1</span>,
+    <span class="hljs-number">-34.6</span>,
+    <span class="hljs-number">-17.3</span>,
+    <span class="hljs-number">38.2</span>
+  ],
+  <span class="hljs-attr">"crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::WGS 1984"</span>,
+  <span class="hljs-attr">"table"</span>: <span class="hljs-string">"http://www.fao.org/ag/AGL/aglw/aquastat/watresafrica/index.stm"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--metadata-raw-categories--category--get" class="operation panel" data-traverse-target="operation--metadata-raw-categories--category--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Requests a category from Geonetwork opensource.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/metadata/raw/categories/{category}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask Geonetwork which metadata records are available for a certain category and returns the JSON response with these records. Requirement: a virtual CSW is defined in Geonetwork</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">category:
+                        <span class="prop-type">
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in path </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>A Geonetwork category</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>The Search Results from Geonetwork</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"csw:GetRecordsResponse"</span>: {
+    <span class="hljs-attr">"@xmlns:csw"</span>: <span class="hljs-string">"http://www.opengis.net/cat/csw/2.0.2"</span>,
+    <span class="hljs-attr">"@xmlns:xsi"</span>: <span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>,
+    <span class="hljs-attr">"@xsi:schemaLocation"</span>: <span class="hljs-string">"http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd"</span>,
+    <span class="hljs-attr">"csw:SearchStatus"</span>: {
+      <span class="hljs-attr">"@timestamp"</span>: <span class="hljs-string">"2018-03-28T13:46:43"</span>
+    },
+    <span class="hljs-attr">"csw:SearchResults"</span>: {
+      <span class="hljs-attr">"@numberOfRecordsMatched"</span>: <span class="hljs-string">"2"</span>,
+      <span class="hljs-attr">"@numberOfRecordsReturned"</span>: <span class="hljs-string">"2"</span>,
+      <span class="hljs-attr">"@elementSet"</span>: <span class="hljs-string">"full"</span>,
+      <span class="hljs-attr">"@nextRecord"</span>: <span class="hljs-string">"0"</span>,
+      <span class="hljs-attr">"csw:Record"</span>: [
+        {
+          <span class="hljs-attr">"@xmlns:ows"</span>: <span class="hljs-string">"http://www.opengis.net/ows"</span>,
+          <span class="hljs-attr">"@xmlns:dc"</span>: <span class="hljs-string">"http://purl.org/dc/elements/1.1/"</span>,
+          <span class="hljs-attr">"@xmlns:geonet"</span>: <span class="hljs-string">"http://www.fao.org/geonetwork"</span>,
+          <span class="hljs-attr">"@xmlns:dct"</span>: <span class="hljs-string">"http://purl.org/dc/terms/"</span>,
+          <span class="hljs-attr">"dc:identifier"</span>: <span class="hljs-string">"d619aac5-6fc7-44f2-9552-7f8bb4d826e0"</span>,
+          <span class="hljs-attr">"dc:date"</span>: <span class="hljs-string">"2018-02-02T09:47:25"</span>,
+          <span class="hljs-attr">"dc:title"</span>: <span class="hljs-string">"Localities in Victoria (VMADMIN.LOCALITY_POLYGON) - Comprehensive Elements"</span>,
+          <span class="hljs-attr">"dc:type"</span>: <span class="hljs-string">"dataset"</span>,
+          <span class="hljs-attr">"dc:subject"</span>: [
+            <span class="hljs-string">"BOUNDARIES-Administrative"</span>,
+            <span class="hljs-string">"LAND-Ownership"</span>,
+            <span class="hljs-string">"boundaries"</span>
+          ],
+          <span class="hljs-attr">"dc:format"</span>: [
+            <span class="hljs-string">"Most popular formats including ESRI shape, MapInfo Tab and Oracle Spatial"</span>,
+            <span class="hljs-string">"Most popular formats including ESRI shape, MapInfo Tab and Oracle Spatial"</span>
+          ],
+          <span class="hljs-attr">"dct:abstract"</span>: <span class="hljs-string">"This dataset is the definitive set of locality boundaries for the state of Victoria            as defined by Local Government and registered by the Registrar of Geographic Names.            The boundaries are aligned to Vicmap Property. This dataset is part of the Vicmap Admin dataset series."</span>,
+          <span class="hljs-attr">"dc:description"</span>: <span class="hljs-string">"This dataset is the definitive set of locality boundaries for the state of Victoria            as defined by Local Government and registered by the Registrar of Geographic Names.            The boundaries are aligned to Vicmap Property. This dataset is part of the Vicmap Admin dataset series."</span>,
+          <span class="hljs-attr">"dc:rights"</span>: [
+            <span class="hljs-string">"intellectualPropertyRights"</span>,
+            <span class="hljs-string">"otherRestrictions"</span>
+          ],
+          <span class="hljs-attr">"dc:language"</span>: <span class="hljs-string">"eng"</span>,
+          <span class="hljs-attr">"dc:source"</span>: <span class="hljs-string">"Local Government defines suburb, town and rural district boundaries after seeking appropriate consultation with all interested parties.              Proposed boundaries/names are submitted to the Registrar of Geographic Names for approval and formal gazettal.              As boundary and name information changes are processed through the formal definition and gazettal process at the Registrar of Geographic Names, the amendments will be flagged              and the dataset will be updated by the maintainer with all new boundaries aligned to Vicmap Property."</span>,
+          <span class="hljs-attr">"ows:BoundingBox"</span>: {
+            <span class="hljs-attr">"@crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::4283"</span>,
+            <span class="hljs-attr">"ows:LowerCorner"</span>: <span class="hljs-string">"150 -39"</span>,
+            <span class="hljs-attr">"ows:UpperCorner"</span>: <span class="hljs-string">"141 -34"</span>
+          },
+          <span class="hljs-attr">"dc:URI"</span>: {
+            <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Web page listing Data Service Providers (DSP)s"</span>,
+            <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://www.land.vic.gov.au/vicmapdsp"</span>
+          }
+        },
+        {
+          <span class="hljs-attr">"@xmlns:ows"</span>: <span class="hljs-string">"http://www.opengis.net/ows"</span>,
+          <span class="hljs-attr">"@xmlns:dc"</span>: <span class="hljs-string">"http://purl.org/dc/elements/1.1/"</span>,
+          <span class="hljs-attr">"@xmlns:geonet"</span>: <span class="hljs-string">"http://www.fao.org/geonetwork"</span>,
+          <span class="hljs-attr">"@xmlns:dct"</span>: <span class="hljs-string">"http://purl.org/dc/terms/"</span>,
+          <span class="hljs-attr">"dc:identifier"</span>: <span class="hljs-string">"78f93047-74f8-4419-ac3d-fc62e4b0477b"</span>,
+          <span class="hljs-attr">"dc:date"</span>: <span class="hljs-string">"2018-02-02T09:47:45"</span>,
+          <span class="hljs-attr">"dc:title"</span>: <span class="hljs-string">"Physiographic Map of North and Central Eurasia (Sample record, please remove!)"</span>,
+          <span class="hljs-attr">"dc:subject"</span>: [
+            <span class="hljs-string">"physiography, soil"</span>,
+            <span class="hljs-string">"Eurasia"</span>,
+            <span class="hljs-string">"geoscientificInformation"</span>
+          ],
+          <span class="hljs-attr">"dct:abstract"</span>: <span class="hljs-string">"Physiographic maps for the CIS and Baltic States (CIS_BS), Mongolia, China and Taiwan Province of China. Between the three regions (China, Mongolia, and CIS_BS countries) DCW boundaries were introduced. There are no DCW boundaries between Russian Federation and the rest of the new countries of the CIS_BS. The original physiographic map of China includes the Chinese border between India and China, which extends beyond the Indian border line, and the South China Sea islands (no physiographic information is present for islands in the South China Sea). The use of these country boundaries does not imply the expression of any opinion whatsoever on the part of FAO concerning the legal or constitutional states of any country, territory, or sea area, or concerning delimitation of frontiers. The Maps visualize the items LANDF, HYPSO, SLOPE that correspond to Landform, Hypsometry and Slope."</span>,
+          <span class="hljs-attr">"dc:description"</span>: <span class="hljs-string">"Physiographic maps for the CIS and Baltic States (CIS_BS), Mongolia, China and Taiwan Province of China. Between the three regions (China, Mongolia, and CIS_BS countries) DCW boundaries were introduced. There are no DCW boundaries between Russian Federation and the rest of the new countries of the CIS_BS. The original physiographic map of China includes the Chinese border between India and China, which extends beyond the Indian border line, and the South China Sea islands (no physiographic information is present for islands in the South China Sea). The use of these country boundaries does not imply the expression of any opinion whatsoever on the part of FAO concerning the legal or constitutional states of any country, territory, or sea area, or concerning delimitation of frontiers. The Maps visualize the items LANDF, HYPSO, SLOPE that correspond to Landform, Hypsometry and Slope."</span>,
+          <span class="hljs-attr">"dc:rights"</span>: [
+            <span class="hljs-string">"copyright"</span>,
+            <span class="hljs-string">"copyright"</span>
+          ],
+          <span class="hljs-attr">"dc:language"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"dc:source"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"ows:BoundingBox"</span>: {
+            <span class="hljs-attr">"@crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::Lambert Azimuthal Projection"</span>,
+            <span class="hljs-attr">"ows:LowerCorner"</span>: <span class="hljs-string">"156 -3"</span>,
+            <span class="hljs-attr">"ows:UpperCorner"</span>: <span class="hljs-string">"37 83"</span>
+          },
+          <span class="hljs-attr">"dc:URI"</span>: [
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"WWW:DOWNLOAD-1.0-http--download"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"phy.zip"</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Physiography of North and Central Eurasia Landform (Gif Format)"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/78f93047-74f8-4419-ac3d-fc62e4b0477b/attachments/phy.zip"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"OGC:WMS"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"GEONETWORK:phy_landf_7386"</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Physiography of North and Central Eurasia Landform"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://data.fao.org/maps/wms"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"OGC:WMS"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"GEONETWORK:phy_slope_7386"</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Physiography of North and Central Eurasia Slope"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://data.fao.org/maps/wms"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"OGC:WMS"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"GEONETWORK:phy_hypso_7386"</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Physiography of North and Central Eurasia Hypsography"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://data.fao.org/maps/wms"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"image/gif"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"Physiographic Map (small preview)"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/78f93047-74f8-4419-ac3d-fc62e4b0477b/attachments/phy_s.gif"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"image/gif"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"Physiographic Map"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/78f93047-74f8-4419-ac3d-fc62e4b0477b/attachments/phy.gif"</span>
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--metadata-raw-tags--tags--get" class="operation panel" data-traverse-target="operation--metadata-raw-tags--tags--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Requests one or many tags from Geonetwork opensource.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/metadata/raw/tags/{tags}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask Geonetwork which metadata records are available for a certain tag or more tags separated by comma and returns the JSON response with these records.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">tags:
+                        <span class="prop-type">
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in path </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>One or more Geonetwork tags, comma separated</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>The Search Results from Geonetwork</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"csw:GetRecordsResponse"</span>: {
+    <span class="hljs-attr">"@xmlns:csw"</span>: <span class="hljs-string">"http://www.opengis.net/cat/csw/2.0.2"</span>,
+    <span class="hljs-attr">"@xmlns:xsi"</span>: <span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>,
+    <span class="hljs-attr">"@xsi:schemaLocation"</span>: <span class="hljs-string">"http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd"</span>,
+    <span class="hljs-attr">"csw:SearchStatus"</span>: {
+      <span class="hljs-attr">"@timestamp"</span>: <span class="hljs-string">"2018-03-28T13:42:41"</span>
+    },
+    <span class="hljs-attr">"csw:SearchResults"</span>: {
+      <span class="hljs-attr">"@numberOfRecordsMatched"</span>: <span class="hljs-string">"2"</span>,
+      <span class="hljs-attr">"@numberOfRecordsReturned"</span>: <span class="hljs-string">"2"</span>,
+      <span class="hljs-attr">"@elementSet"</span>: <span class="hljs-string">"full"</span>,
+      <span class="hljs-attr">"@nextRecord"</span>: <span class="hljs-string">"0"</span>,
+      <span class="hljs-attr">"csw:Record"</span>: [
+        {
+          <span class="hljs-attr">"@xmlns:ows"</span>: <span class="hljs-string">"http://www.opengis.net/ows"</span>,
+          <span class="hljs-attr">"@xmlns:dc"</span>: <span class="hljs-string">"http://purl.org/dc/elements/1.1/"</span>,
+          <span class="hljs-attr">"@xmlns:geonet"</span>: <span class="hljs-string">"http://www.fao.org/geonetwork"</span>,
+          <span class="hljs-attr">"@xmlns:dct"</span>: <span class="hljs-string">"http://purl.org/dc/terms/"</span>,
+          <span class="hljs-attr">"dc:identifier"</span>: <span class="hljs-string">"da165110-88fd-11da-a88f-000d939bc5d8"</span>,
+          <span class="hljs-attr">"dc:date"</span>: <span class="hljs-string">"2018-02-02T09:46:51"</span>,
+          <span class="hljs-attr">"dc:title"</span>: <span class="hljs-string">"Hydrological Basins in Africa (Sample record, please remove!)"</span>,
+          <span class="hljs-attr">"dc:subject"</span>: [
+            <span class="hljs-string">"watersheds"</span>,
+            <span class="hljs-string">"river basins"</span>,
+            <span class="hljs-string">"water resources"</span>,
+            <span class="hljs-string">"hydrology"</span>,
+            <span class="hljs-string">"AQUASTAT"</span>,
+            <span class="hljs-string">"AWRD"</span>,
+            <span class="hljs-string">"Africa"</span>,
+            <span class="hljs-string">"inlandWaters"</span>
+          ],
+          <span class="hljs-attr">"dc:format"</span>: [
+            <span class="hljs-string">"ShapeFile"</span>,
+            <span class="hljs-string">"ShapeFile"</span>
+          ],
+          <span class="hljs-attr">"dct:abstract"</span>: <span class="hljs-string">"Major hydrological basins and their sub-basins. This dataset divides the African continent according to its hydrological characteristics.\nThe dataset consists of the following information:- numerical code and name of the major basin (MAJ_BAS and MAJ_NAME); - area of the major basin in square km (MAJ_AREA); - numerical code and name of the sub-basin (SUB_BAS and SUB_NAME); - area of the sub-basin in square km (SUB_AREA); - numerical code of the sub-basin towards which the sub-basin flows (TO_SUBBAS) (the codes -888 and -999 have been assigned respectively to internal sub-basins and to sub-basins draining into the sea)"</span>,
+          <span class="hljs-attr">"dc:description"</span>: <span class="hljs-string">"Major hydrological basins and their sub-basins. This dataset divides the African continent according to its hydrological characteristics.\nThe dataset consists of the following information:- numerical code and name of the major basin (MAJ_BAS and MAJ_NAME); - area of the major basin in square km (MAJ_AREA); - numerical code and name of the sub-basin (SUB_BAS and SUB_NAME); - area of the sub-basin in square km (SUB_AREA); - numerical code of the sub-basin towards which the sub-basin flows (TO_SUBBAS) (the codes -888 and -999 have been assigned respectively to internal sub-basins and to sub-basins draining into the sea)"</span>,
+          <span class="hljs-attr">"dc:language"</span>: <span class="hljs-string">"eng"</span>,
+          <span class="hljs-attr">"dc:source"</span>: <span class="hljs-string">"The linework of the map is obtained by delineating drainage basin boundaries from an hydrologically corrected digital elevation model with a resolution of 1 * 1 km."</span>,
+          <span class="hljs-attr">"ows:BoundingBox"</span>: {
+            <span class="hljs-attr">"@crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::WGS 1984"</span>,
+            <span class="hljs-attr">"ows:LowerCorner"</span>: <span class="hljs-string">"51.1 -34.6"</span>,
+            <span class="hljs-attr">"ows:UpperCorner"</span>: <span class="hljs-string">"-17.3 38.2"</span>
+          },
+          <span class="hljs-attr">"dc:URI"</span>: [
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"WWW:LINK-1.0-http--link"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">""</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Online link to the  'Water Resources and Irrigation in Africa'- website"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://www.fao.org/ag/AGL/aglw/aquastat/watresafrica/index.stm"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"WWW:DOWNLOAD-1.0-http--download"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"basins.zip"</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Hydrological basins in Africa (Shapefile Format)"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/attachments/basins.zip"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"OGC:WMS"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"GEONETWORK:basins_296"</span>,
+              <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Hydrological basins in Africa"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://data.fao.org/maps/wms"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"image/gif"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"Hydrological Basins in Africa (small preview)"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/attachments/thumbnail_s.gif"</span>
+            },
+            {
+              <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"image/gif"</span>,
+              <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"Hydrological Basins in Africa"</span>,
+              <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/attachments/thumbnail.gif"</span>
+            }
+          ]
+        },
+        {
+          <span class="hljs-attr">"@xmlns:ows"</span>: <span class="hljs-string">"http://www.opengis.net/ows"</span>,
+          <span class="hljs-attr">"@xmlns:dc"</span>: <span class="hljs-string">"http://purl.org/dc/elements/1.1/"</span>,
+          <span class="hljs-attr">"@xmlns:geonet"</span>: <span class="hljs-string">"http://www.fao.org/geonetwork"</span>,
+          <span class="hljs-attr">"@xmlns:dct"</span>: <span class="hljs-string">"http://purl.org/dc/terms/"</span>,
+          <span class="hljs-attr">"dc:identifier"</span>: <span class="hljs-string">"d619aac5-6fc7-44f2-9552-7f8bb4d826e0"</span>,
+          <span class="hljs-attr">"dc:date"</span>: <span class="hljs-string">"2018-02-02T09:47:25"</span>,
+          <span class="hljs-attr">"dc:title"</span>: <span class="hljs-string">"Localities in Victoria (VMADMIN.LOCALITY_POLYGON) - Comprehensive Elements"</span>,
+          <span class="hljs-attr">"dc:type"</span>: <span class="hljs-string">"dataset"</span>,
+          <span class="hljs-attr">"dc:subject"</span>: [
+            <span class="hljs-string">"BOUNDARIES-Administrative"</span>,
+            <span class="hljs-string">"LAND-Ownership"</span>,
+            <span class="hljs-string">"boundaries"</span>
+          ],
+          <span class="hljs-attr">"dc:format"</span>: [
+            <span class="hljs-string">"Most popular formats including ESRI shape, MapInfo Tab and Oracle Spatial"</span>,
+            <span class="hljs-string">"Most popular formats including ESRI shape, MapInfo Tab and Oracle Spatial"</span>
+          ],
+          <span class="hljs-attr">"dct:abstract"</span>: <span class="hljs-string">"This dataset is the definitive set of locality boundaries for the state of Victoria            as defined by Local Government and registered by the Registrar of Geographic Names.            The boundaries are aligned to Vicmap Property. This dataset is part of the Vicmap Admin dataset series."</span>,
+          <span class="hljs-attr">"dc:description"</span>: <span class="hljs-string">"This dataset is the definitive set of locality boundaries for the state of Victoria            as defined by Local Government and registered by the Registrar of Geographic Names.            The boundaries are aligned to Vicmap Property. This dataset is part of the Vicmap Admin dataset series."</span>,
+          <span class="hljs-attr">"dc:rights"</span>: [
+            <span class="hljs-string">"intellectualPropertyRights"</span>,
+            <span class="hljs-string">"otherRestrictions"</span>
+          ],
+          <span class="hljs-attr">"dc:language"</span>: <span class="hljs-string">"eng"</span>,
+          <span class="hljs-attr">"dc:source"</span>: <span class="hljs-string">"Local Government defines suburb, town and rural district boundaries after seeking appropriate consultation with all interested parties.              Proposed boundaries/names are submitted to the Registrar of Geographic Names for approval and formal gazettal.              As boundary and name information changes are processed through the formal definition and gazettal process at the Registrar of Geographic Names, the amendments will be flagged              and the dataset will be updated by the maintainer with all new boundaries aligned to Vicmap Property."</span>,
+          <span class="hljs-attr">"ows:BoundingBox"</span>: {
+            <span class="hljs-attr">"@crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::4283"</span>,
+            <span class="hljs-attr">"ows:LowerCorner"</span>: <span class="hljs-string">"150 -39"</span>,
+            <span class="hljs-attr">"ows:UpperCorner"</span>: <span class="hljs-string">"141 -34"</span>
+          },
+          <span class="hljs-attr">"dc:URI"</span>: {
+            <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Web page listing Data Service Providers (DSP)s"</span>,
+            <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://www.land.vic.gov.au/vicmapdsp"</span>
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--metadata-raw-uuids--uuid--get" class="operation panel" data-traverse-target="operation--metadata-raw-uuids--uuid--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Requests an uuid from Geonetwork opensource.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/metadata/raw/uuids/{uuid}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask Geonetwork which metadata records are available for a certain uuid and returns the JSON response with this record.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">uuid:
+                        <span class="prop-type">
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in path </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>A Geonetwork uuid from a record</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>The Search Results from Geonetwork</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"csw:GetRecordByIdResponse"</span>: {
+    <span class="hljs-attr">"@xmlns:csw"</span>: <span class="hljs-string">"http://www.opengis.net/cat/csw/2.0.2"</span>,
+    <span class="hljs-attr">"csw:Record"</span>: {
+      <span class="hljs-attr">"@xmlns:ows"</span>: <span class="hljs-string">"http://www.opengis.net/ows"</span>,
+      <span class="hljs-attr">"@xmlns:dc"</span>: <span class="hljs-string">"http://purl.org/dc/elements/1.1/"</span>,
+      <span class="hljs-attr">"@xmlns:geonet"</span>: <span class="hljs-string">"http://www.fao.org/geonetwork"</span>,
+      <span class="hljs-attr">"@xmlns:dct"</span>: <span class="hljs-string">"http://purl.org/dc/terms/"</span>,
+      <span class="hljs-attr">"dc:identifier"</span>: <span class="hljs-string">"da165110-88fd-11da-a88f-000d939bc5d8"</span>,
+      <span class="hljs-attr">"dc:date"</span>: <span class="hljs-string">"2018-02-02T09:46:51"</span>,
+      <span class="hljs-attr">"dc:title"</span>: <span class="hljs-string">"Hydrological Basins in Africa (Sample record, please remove!)"</span>,
+      <span class="hljs-attr">"dc:subject"</span>: [
+        <span class="hljs-string">"watersheds"</span>,
+        <span class="hljs-string">"river basins"</span>,
+        <span class="hljs-string">"water resources"</span>,
+        <span class="hljs-string">"hydrology"</span>,
+        <span class="hljs-string">"AQUASTAT"</span>,
+        <span class="hljs-string">"AWRD"</span>,
+        <span class="hljs-string">"Africa"</span>,
+        <span class="hljs-string">"inlandWaters"</span>
+      ],
+      <span class="hljs-attr">"dc:format"</span>: [
+        <span class="hljs-string">"ShapeFile"</span>,
+        <span class="hljs-string">"ShapeFile"</span>
+      ],
+      <span class="hljs-attr">"dct:abstract"</span>: <span class="hljs-string">"Major hydrological basins and their sub-basins. This dataset divides the African continent according to its hydrological characteristics.\nThe dataset consists of the following information:- numerical code and name of the major basin (MAJ_BAS and MAJ_NAME); - area of the major basin in square km (MAJ_AREA); - numerical code and name of the sub-basin (SUB_BAS and SUB_NAME); - area of the sub-basin in square km (SUB_AREA); - numerical code of the sub-basin towards which the sub-basin flows (TO_SUBBAS) (the codes -888 and -999 have been assigned respectively to internal sub-basins and to sub-basins draining into the sea)"</span>,
+      <span class="hljs-attr">"dc:description"</span>: <span class="hljs-string">"Major hydrological basins and their sub-basins. This dataset divides the African continent according to its hydrological characteristics.\nThe dataset consists of the following information:- numerical code and name of the major basin (MAJ_BAS and MAJ_NAME); - area of the major basin in square km (MAJ_AREA); - numerical code and name of the sub-basin (SUB_BAS and SUB_NAME); - area of the sub-basin in square km (SUB_AREA); - numerical code of the sub-basin towards which the sub-basin flows (TO_SUBBAS) (the codes -888 and -999 have been assigned respectively to internal sub-basins and to sub-basins draining into the sea)"</span>,
+      <span class="hljs-attr">"dc:language"</span>: <span class="hljs-string">"eng"</span>,
+      <span class="hljs-attr">"dc:source"</span>: <span class="hljs-string">"The linework of the map is obtained by delineating drainage basin boundaries from an hydrologically corrected digital elevation model with a resolution of 1 * 1 km."</span>,
+      <span class="hljs-attr">"ows:BoundingBox"</span>: {
+        <span class="hljs-attr">"@crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::WGS 1984"</span>,
+        <span class="hljs-attr">"ows:LowerCorner"</span>: <span class="hljs-string">"51.1 -34.6"</span>,
+        <span class="hljs-attr">"ows:UpperCorner"</span>: <span class="hljs-string">"-17.3 38.2"</span>
+      },
+      <span class="hljs-attr">"dc:URI"</span>: [
+        {
+          <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"WWW:LINK-1.0-http--link"</span>,
+          <span class="hljs-attr">"@name"</span>: <span class="hljs-string">""</span>,
+          <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Online link to the  'Water Resources and Irrigation in Africa'- website"</span>,
+          <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://www.fao.org/ag/AGL/aglw/aquastat/watresafrica/index.stm"</span>
+        },
+        {
+          <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"WWW:DOWNLOAD-1.0-http--download"</span>,
+          <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"basins.zip"</span>,
+          <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Hydrological basins in Africa (Shapefile Format)"</span>,
+          <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/attachments/basins.zip"</span>
+        },
+        {
+          <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"OGC:WMS"</span>,
+          <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"GEONETWORK:basins_296"</span>,
+          <span class="hljs-attr">"@description"</span>: <span class="hljs-string">"Hydrological basins in Africa"</span>,
+          <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://data.fao.org/maps/wms"</span>
+        },
+        {
+          <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"image/gif"</span>,
+          <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"Hydrological Basins in Africa (small preview)"</span>,
+          <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/attachments/thumbnail_s.gif"</span>
+        },
+        {
+          <span class="hljs-attr">"@protocol"</span>: <span class="hljs-string">"image/gif"</span>,
+          <span class="hljs-attr">"@name"</span>: <span class="hljs-string">"Hydrological Basins in Africa"</span>,
+          <span class="hljs-attr">"#text"</span>: <span class="hljs-string">"http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/attachments/thumbnail.gif"</span>
+        }
+      ]
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--metadata-test-connection-post" class="operation panel" data-traverse-target="operation--metadata-test-connection-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Tests for active connection to Geonetwork opensource.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/metadata/test/connection</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask the backend if it can successfully connect to Geonetwork.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/SimpleStatusCodeResponseModel">SimpleStatusCodeResponseModel</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Success or failure of connection</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"success"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--metadata-test-connection-get" class="operation panel" data-traverse-target="operation--metadata-test-connection-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-GeoNetwork">GeoNetwork</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Tests for active connection to Geonetwork opensource.</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/metadata/test/connection</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The request will ask the backend if it can successfully connect to Geonetwork.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/SimpleStatusCodeResponseModel">SimpleStatusCodeResponseModel</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Success or failure of connection</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"success"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1>Schema Definitions</h1>
+          <div id="definition-SimpleStatusCodeResponseModel" class="definition panel" data-traverse-target="definition-SimpleStatusCodeResponseModel">
+            <h2 class="panel-title">
+              <a name="/definitions/SimpleStatusCodeResponseModel"></a>SimpleStatusCodeResponseModel: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>Simple response schema to inform about status.</p>
+                </section>
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="status" class="has-description">
+                      <span class="json-property-name">status:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The status code of the request.</p>
+                    </dd>
+                    <dt data-property-name="message" class="has-description">
+                      <span class="json-property-name">message:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>A short message to describes the status</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"success"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GeodataResponseModel" class="definition panel" data-traverse-target="definition-GeodataResponseModel">
+            <h2 class="panel-title">
+              <a name="/definitions/GeodataResponseModel"></a>GeodataResponseModel: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>Model for object for geodata</p>
+                </section>
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="uuid" class="has-description">
+                      <span class="json-property-name">uuid:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The Geonetwork uuid.</p>
+                    </dd>
+                    <dt data-property-name="bbox" class="has-description">
+                      <span class="json-property-name">bbox:</span>
+                      <span class="json-property-type">number[]</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The bounding box of the result.</p>
+                    </dd>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-array-items">
+                        <span class="json-property-type">number</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                        <div class="json-inner-schema"> </div>
+                      </section>
+                    </dt>
+                    <dt data-property-name="crs" class="has-description">
+                      <span class="json-property-name">crs:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The coordinate reference system of the result.</p>
+                    </dd>
+                    <dt data-property-name="table" class="has-description">
+                      <span class="json-property-name">table:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The database connection string of the source of the result.</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"da165110-88fd-11da-a88f-000d939bc5d8"</span>,
+  <span class="hljs-attr">"bbox"</span>: [
+    <span class="hljs-number">51.1</span>,
+    <span class="hljs-number">-34.6</span>,
+    <span class="hljs-number">-17.3</span>,
+    <span class="hljs-number">38.2</span>
+  ],
+  <span class="hljs-attr">"crs"</span>: <span class="hljs-string">"urn:ogc:def:crs:::WGS 1984"</span>,
+  <span class="hljs-attr">"table"</span>: <span class="hljs-string">"http://www.fao.org/ag/AGL/aglw/aquastat/watresafrica/index.stm"</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div class="doc-row no-margin">
+            <div class="doc-copy doc-separator">
+              <a class="powered-by" href="https://sourcey.com/spectacle">Documentation by
+                <span>Spectacle</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
