@@ -234,15 +234,16 @@ def parseMeta(recordXml):
     # of materialized views
     try:
         log.warning('Feature Catalog UUID is: ' + featureCatalogUuid)
-    #     featRec = getRecordByUUID(featureCatalogUuid)
-    #     featRecRoot = json.loads(featRec)['csw:GetRecordByIdResponse']['csw:Record']
-    #     featRecAttr = featRecRoot['dc:subject']
-    #     for i in featRecAttr:
-    #         if 'idpk' in i:
-    #             featureCatalogIdColumn = i
-    #     log.warning('Feature Catalog ID column is: ' + featureCatalogIdColumn)
+        # featRec = getRecordByUUID(featureCatalogUuid)
+        # featRecDict = json.loads(featRec)
+        # featRecRoot = featRecDict['csw:GetRecordByIdResponse']['csw:Record']
+        # featRecAttr = featRecRoot['dc:subject']
+        # for i in featRecAttr:
+        #     if 'idpk' in i:
+        #         featCatalogIdColumn = i
+        # log.warning('Feature Catalog ID column is: ' + featCatalogIdColumn)
     except Exception:
-        log.warning('Could not set featureCatalogIdColumn from CatalogUuid')
+        log.warning('Could not set featCatalogIdColumn from CatalogUuid')
 
     geodata_meta = GeodataMeta(
         uuid=uuid,

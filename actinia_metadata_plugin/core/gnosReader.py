@@ -80,7 +80,8 @@ def getRecordsByCategory(category):
 
     try:
         url = (GEONETWORK.csw_url + '-' + category)
-        tpl = tplEnv.get_template('geonetwork/get_records_by_category_kvp.json')
+        tpl = tplEnv.get_template(
+            'geonetwork/get_records_by_category_kvp.json')
         kvps = json.loads(tpl.render())
     except Exception as e:
         log.error('Could not set needed variable')

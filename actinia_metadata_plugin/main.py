@@ -50,7 +50,8 @@ endpoints.create_endpoints(apidoc)
 
 
 if __name__ == '__main__':
-    # call this for development only with `python -m actinia_metadata_plugin.main`
+    # call this for development only with
+    # `python -m actinia_metadata_plugin.main`
     log.debug('starting app in development mode...')
     app.run(debug=True, use_reloader=False)
     # for production environent use application in wsgy.py
