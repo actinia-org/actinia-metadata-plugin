@@ -24,7 +24,7 @@ __copyright__ = "2018-present mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-import os
+# import os
 
 import requests
 import xmltodict
@@ -35,7 +35,7 @@ from actinia_metadata_plugin.core.common import auth
 from actinia_metadata_plugin.core.gnosReader import getRecordByUUID
 from actinia_metadata_plugin.core.gnosParser import updateXml
 from actinia_metadata_plugin.resources.config import GEONETWORK
-from actinia_metadata_plugin.resources.config import FILEUPLOAD
+# from actinia_metadata_plugin.resources.config import FILEUPLOAD
 from actinia_metadata_plugin.resources.logging import log
 from actinia_metadata_plugin.resources.templating import tplEnv
 
@@ -99,8 +99,7 @@ def update(uuid, utcnow):
         response = getRecordByUUID(uuid)
         doc = parseString(response.decode('utf-8'))
         recordNode = doc.getElementsByTagName('gmd:MD_Metadata')[0]
-        log.debug('Found metadata to update for ' + uuid + ', and '
-                  + str(recordNode))
+        log.debug('Found metadata for ' + uuid + ', ' + str(recordNode))
     except Exception:
         log.error('Could not find metadata record to update for uuid ' + uuid)
         return None

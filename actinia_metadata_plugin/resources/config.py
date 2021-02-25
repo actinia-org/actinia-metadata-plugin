@@ -97,7 +97,8 @@ class Configfile:
             if config.has_option("GEONETWORK", "csw_path"):
                 GEONETWORK.csw_path = config.get("GEONETWORK", "csw_path")
             if config.has_option("GEONETWORK", "csw_create_path"):
-                GEONETWORK.csw_create_path = config.get("GEONETWORK", "csw_create_path")
+                GEONETWORK.csw_create_path = config.get(
+                    "GEONETWORK", "csw_create_path")
             if config.has_option("GEONETWORK", "user"):
                 GEONETWORK.user = config.get("GEONETWORK", "user")
             if config.has_option("GEONETWORK", "password"):

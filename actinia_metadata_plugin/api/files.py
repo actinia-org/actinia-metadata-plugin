@@ -35,8 +35,10 @@ from werkzeug.utils import secure_filename
 from actinia_metadata_plugin.apidocs import files
 from actinia_metadata_plugin.resources.config import FILEUPLOAD
 from actinia_metadata_plugin.core.gnosWriter import create
-from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
-from actinia_metadata_plugin.model.responseModels import FileUploadResponseModel
+from actinia_metadata_plugin.model.responseModels import \
+    SimpleStatusCodeResponseModel
+from actinia_metadata_plugin.model.responseModels import \
+    FileUploadResponseModel
 from actinia_metadata_plugin.resources.logging import log
 
 
