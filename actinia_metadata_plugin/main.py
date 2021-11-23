@@ -31,14 +31,17 @@ from flask_restful_swagger_2 import Api
 from actinia_metadata_plugin import endpoints
 from actinia_metadata_plugin.resources.logging import log
 
-
 app = Flask(__name__)
 CORS(app)
+
+API_VERSION = "v1"
+
+URL_PREFIX = f"/api/{API_VERSION}"
 
 apidoc = Api(
     app,
     title="actinia-metadata-plugin",
-    api_spec_url='/api/v1/swagger',
+    api_spec_url=f'{URL_PREFIX}/swagger',
     schemes=['https', 'http'],
     consumes=['application/json'],
     description="""Contains communication with a metadata catalog via OGC-CSW,

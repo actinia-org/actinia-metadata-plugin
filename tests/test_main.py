@@ -33,6 +33,11 @@ from flask import Response
 import actinia_metadata_plugin
 from actinia_metadata_plugin.main import app
 
+try:
+    from actinia_core.core.common.app import URL_PREFIX
+except ImportError:
+    from actinia_metadata_plugin.main import URL_PREFIX
+
 
 class AppTest(unittest.TestCase):
 
@@ -90,7 +95,7 @@ class swaggerTest(unittest.TestCase):
         app.testing = True
         self.app = app.test_client()
 
-        resp = self.app.get('/api/v1/swagger.json')
+        resp = self.app.get(f'{URL_PREFIX}/swagger.json')
         respData = json.loads(resp.get_data(as_text=True))
 
         assert type(resp) is Response
