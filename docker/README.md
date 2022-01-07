@@ -121,7 +121,7 @@ deactivate
 ## Create API docs
 ```
 API_VERSION="v1" # As standalone app
-API_VERSION="v2" # As actinia-core plugin
+API_VERSION="v3" # As actinia-core plugin
 wget -O /tmp/actinia-metadata.json http://127.0.0.1:5000/api/${API_VERSION}/swagger.json
 ```
 Run spectacle docker image to generate the HTML documentation
