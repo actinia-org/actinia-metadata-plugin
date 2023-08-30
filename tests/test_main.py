@@ -34,7 +34,7 @@ import actinia_metadata_plugin
 from actinia_metadata_plugin.main import app
 
 try:
-    from actinia_core.core.common.app import URL_PREFIX
+    from actinia_api import URL_PREFIX
 except ImportError:
     from actinia_metadata_plugin.main import URL_PREFIX
 
