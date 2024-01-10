@@ -32,7 +32,7 @@ from setuptools import setup
 
 
 def setup_package():
-    setup(setup_requires=['pyscaffold>=3.0a0,<3.1a0'],
+    setup(setup_requires=['pyscaffold>=4.5,<4.6'],
           packages=['actinia_metadata_plugin'],
           package_dir={'actinia_metadata_plugin': 'actinia_metadata_plugin'},
           include_package_data=True,
