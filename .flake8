@@ -5,9 +5,12 @@
 # F401 'module' imported but unused
 # F841 local variable 'records' is assigned to but never used
 
+max-line-length = 79
+
 per-file-ignores =
     ./actinia_metadata_plugin/apidocs/files.py: E501
     ./actinia_metadata_plugin/apidocs/metadata.py: E122, E501
     ./actinia_metadata_plugin/wsgi.py: F401
     ./actinia_metadata_plugin/core/common.py: F841
     ./actinia_metadata_plugin/resources/config.py: F401
+    ./tests/*: E721
