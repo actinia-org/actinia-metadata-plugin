@@ -42,7 +42,7 @@ dependencies = [
     "python-json-logger",
     "requests>=2.20.0",
     "setuptools>=30.3.0",
-    "xmltodict>=0.11.",
+    "xmltodict>=0.11",
 ]
 
 [project.optional-dependencies]

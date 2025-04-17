@@ -98,7 +98,7 @@ pip3 install .
 ```
 Run tests:
 ```
-python setup.py test
+python -m pytest
 ```
 
 Run the server for development:
