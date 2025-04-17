@@ -92,14 +92,13 @@ virtualenv -p python3 venv
 
 Change configuration in ```config/mount```
 
-Install required Python packages into the virtual environment:
+Install plugin including required Python packages into the virtual environment:
 ```
-pip install -r requirements.txt
-python setup.py install
+pip3 install .
 ```
 Run tests:
 ```
-python setup.py test
+python -m pytest
 ```
 
 Run the server for development:

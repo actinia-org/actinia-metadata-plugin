@@ -1,3 +1,77 @@
 [build-system]
-requires = ["setuptools>=40.6.0", "wheel"]
+requires      = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "actinia-metadata-plugin"
+version = "1.0.3"
+description = "A (RESTFUL) Flask application which to communicate with a metadata catalog via OGC-CSW, in usage with GeoNetwork opensource."
+readme = "README.md"
+authors = [
+    { name = "Carmen Tawalika"},
+    { name = "Anika Weinmann"},
+    { name = "Markus Neteler"},
+    { name = "Jan Suleiman"},
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.8"
+keywords = [
+    "processing",
+    "earth observation",
+    "cloud-based processing",
+    "rest api",
+    "gis",
+    "grass gis",
+    "osgeo",
+    "metadata",
+]
+
+dependencies = [
+    "colorlog>=3.1.4",
+    "Flask",
+    "Flask-Cors>=3.0.3",
+    "Flask-RESTful>=0.3.6",
+    "flask-restful-swagger-2>=0.35",
+    "gunicorn>=19.7.1",
+    "jsonmodels>=2.3",
+    "pyscaffold",
+    "pytest-cov>=2.5.1",
+    "python-json-logger",
+    "requests>=2.20.0",
+    "setuptools>=30.3.0",
+    "xmltodict>=0.11",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/mundialis/actinia-metadata-plugin"
+Tutorial = "https://mundialis.github.io/actinia_core"
+API_Docs = "https://redocly.github.io/redoc/?url=https://actinia.mundialis.de/latest/swagger.json"
+
+[tool.flake8]
+max-line-length = 79
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--cov actinia_metadata_plugin --cov-report term-missing --verbose --tb=line -x -s"
+testpaths = [
+    "tests",
+]
+markers = [
+    "dev: test current in development",
+    "unittest: completely independent test",
+    "integrationtest: integration test",
+]
