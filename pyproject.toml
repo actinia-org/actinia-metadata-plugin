@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "actinia-metadata-plugin"
-version = "1.0.3"
+version = "1.0.4"
 description = "A (RESTFUL) Flask application which to communicate with a metadata catalog via OGC-CSW, in usage with GeoNetwork opensource."
 readme = "README.md"
 authors = [
