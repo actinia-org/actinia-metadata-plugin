@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: (c) 2018-2025 by mundialis GmbH & Co. KG
+# SPDX-License-Identifier: Apache-2.0
+
 FROM centos/python-38-centos7
 
 # Overwrite the base image run script to make port configurable
