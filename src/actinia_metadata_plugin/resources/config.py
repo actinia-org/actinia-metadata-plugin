@@ -65,7 +65,7 @@ class Configfile:
         config.read(CONFIG_FILES)
 
         if len(config) <= 1:
-            print("Could not find any config file, using default values.")
+            print("No actinia-metadata-plugin config found. Using default plugin settings.")
             return
         print("Loading config files: " + str(CONFIG_FILES) + " ...")
 
