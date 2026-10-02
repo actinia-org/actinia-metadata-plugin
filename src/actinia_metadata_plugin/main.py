@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2021 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2021 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -30,20 +28,20 @@ URL_PREFIX = f"/api/{API_VERSION}"
 apidoc = Api(
     app,
     title="actinia-metadata-plugin",
-    api_spec_url=f'{URL_PREFIX}/swagger',
-    schemes=['https', 'http'],
-    consumes=['application/json'],
+    api_spec_url=f"{URL_PREFIX}/swagger",
+    schemes=["https", "http"],
+    consumes=["application/json"],
     description="""Contains communication with a metadata catalog via OGC-CSW,
                    in usage with GeoNetwork opensource.
-                   """
+                   """,
 )
 
 endpoints.create_endpoints(apidoc)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # call this for development only with
     # `python -m actinia_metadata_plugin.main`
-    log.debug('starting app in development mode...')
+    log.debug("starting app in development mode...")
     app.run(debug=True, use_reloader=False)
     # for production environent use application in wsgy.py

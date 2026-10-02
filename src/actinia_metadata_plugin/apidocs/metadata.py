@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -13,12 +11,13 @@ __copyright__ = "2018-2025 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-import os
 import json
+import os
 
-from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
-from actinia_metadata_plugin.model.responseModels import GeodataResponseModel
-
+from actinia_metadata_plugin.model.responseModels import (
+    GeodataResponseModel,
+    SimpleStatusCodeResponseModel,
+)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 null = "null"
@@ -27,29 +26,25 @@ null = "null"
 connection_get_docs = {
     "summary": "Tests for active connection to Geonetwork opensource.",
     "description": "The request will ask the backend if it can successfully connect to Geonetwork.",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "responses": {
         "200": {
             "description": "Success or failure of connection",
-            "schema": SimpleStatusCodeResponseModel
-        }
-    }
+            "schema": SimpleStatusCodeResponseModel,
+        },
+    },
 }
 
 connection_post_docs = {
     "summary": "Tests for active connection to Geonetwork opensource.",
     "description": "The request will ask the backend if it can successfully connect to Geonetwork.",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "responses": {
         "200": {
             "description": "Success or failure of connection",
-            "schema": SimpleStatusCodeResponseModel
-        }
-    }
+            "schema": SimpleStatusCodeResponseModel,
+        },
+    },
 }
 
 rel_path = "../apidocs/examples/gnos_rawTags_get_example.json"
@@ -60,26 +55,22 @@ with open(abs_file_path) as jsonfile:
 rawTags_get_docs = {
     "summary": "Requests one or many tags from Geonetwork opensource.",
     "description": "The request will ask Geonetwork which metadata records are available for a certain tag or more tags separated by comma and returns the JSON response with these records.",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "parameters": [
         {
             "in": "path",
-        "name": "tags",
-        "type": "string",
-        "description": "One or more Geonetwork tags, comma separated",
-        "required": True
-      }
+            "name": "tags",
+            "type": "string",
+            "description": "One or more Geonetwork tags, comma separated",
+            "required": True,
+        },
     ],
     "responses": {
         "200": {
             "description": "The Search Results from Geonetwork",
-            "schema": {
-                "example": rawTags_get_docs_example
-            }
-        }
-    }
+            "schema": {"example": rawTags_get_docs_example},
+        },
+    },
 }
 
 
@@ -91,26 +82,22 @@ with open(abs_file_path) as jsonfile:
 rawCategory_get_docs = {
     "summary": "Requests a category from Geonetwork opensource.",
     "description": "The request will ask Geonetwork which metadata records are available for a certain category and returns the JSON response with these records. Requirement: a virtual CSW is defined in Geonetwork",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "parameters": [
         {
             "in": "path",
-        "name": "category",
-        "type": "string",
-        "description": "A Geonetwork category",
-        "required": True
-      }
+            "name": "category",
+            "type": "string",
+            "description": "A Geonetwork category",
+            "required": True,
+        },
     ],
     "responses": {
         "200": {
             "description": "The Search Results from Geonetwork",
-            "schema": {
-                "example": rawCategory_get_docs_example
-            }
-        }
-    }
+            "schema": {"example": rawCategory_get_docs_example},
+        },
+    },
 }
 
 rel_path = "../apidocs/examples/gnos_rawUuid_get_example.json"
@@ -121,72 +108,64 @@ with open(abs_file_path) as jsonfile:
 rawUuid_get_docs = {
     "summary": "Requests an uuid from Geonetwork opensource.",
     "description": "The request will ask Geonetwork which metadata records are available for a certain uuid and returns the JSON response with this record.",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "parameters": [
         {
             "in": "path",
-        "name": "uuid",
-        "type": "string",
-        "description": "A Geonetwork uuid from a record",
-        "required": True
-      }
+            "name": "uuid",
+            "type": "string",
+            "description": "A Geonetwork uuid from a record",
+            "required": True,
+        },
     ],
     "responses": {
         "200": {
             "description": "The Search Results from Geonetwork",
-            "schema": {
-                "example": rawUuid_get_docs_example
-            }
-        }
-    }
+            "schema": {"example": rawUuid_get_docs_example},
+        },
+    },
 }
 
 
 tags_get_docs = {
     "summary": "Get geodata object from requests to Geonetwork opensource by one or many tags.",
     "description": "The request will ask Geonetwork which metadata records are available for a certain tag or more tags separated by comma and returns a parsed record build from model. At the moment only the first record is returned.",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "parameters": [
         {
             "in": "path",
-        "name": "tags",
-        "type": "string",
-        "description": "One or more Geonetwork tags, comma separated",
-        "required": True
-      }
+            "name": "tags",
+            "type": "string",
+            "description": "One or more Geonetwork tags, comma separated",
+            "required": True,
+        },
     ],
     "responses": {
         "200": {
             "description": "Modelled Search Results from Geonetwork",
-            "schema": GeodataResponseModel
-        }
-    }
+            "schema": GeodataResponseModel,
+        },
+    },
 }
 
 
 uuid_get_docs = {
     "summary": "Get geodata object from requests to Geonetwork opensource by uuid.",
     "description": "The request will ask Geonetwork which metadata records are available for a certain uuid and returns a parsed record build from model. At the moment only the first record is returned.",
-    "tags": [
-        "GeoNetwork"
-    ],
+    "tags": ["GeoNetwork"],
     "parameters": [
         {
             "in": "path",
-        "name": "uuid",
-        "type": "string",
-        "description": "A Geonetwork uuid from a record",
-        "required": True
-      }
+            "name": "uuid",
+            "type": "string",
+            "description": "A Geonetwork uuid from a record",
+            "required": True,
+        },
     ],
     "responses": {
         "200": {
             "description": "Modelled Search Results from Geonetwork",
-            "schema": GeodataResponseModel
-        }
-    }
+            "schema": GeodataResponseModel,
+        },
+    },
 }

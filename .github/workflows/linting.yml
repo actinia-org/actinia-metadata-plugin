@@ -1,0 +1,28 @@
+name: Linting and code quality check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    uses: mundialis/github-workflows/.github/workflows/linting.yml@main
+    with:
+      # set pylint-version to empty string to skip the pylint workflow
+      pylint-version: ''
+      BASH_SEVERITY: 'warning'
+      VALIDATE_JSON: false
+      VALIDATE_HTML: false
+      VALIDATE_CSS: false
+      VALIDATE_JAVASCRIPT_ES: false
+      VALIDATE_MARKDOWN: false
+      VALIDATE_XML: false
+      VALIDATE_YAML: false
+      VALIDATE_DOCKERFILE_HADOLINT: false
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write

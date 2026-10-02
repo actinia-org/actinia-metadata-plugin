@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -13,11 +11,12 @@ __copyright__ = "2018-2025 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-import pytest
-import unittest
 import json
-from pkg_resources import get_distribution, DistributionNotFound
+import unittest
+
+import pytest
 from flask import Response
+from pkg_resources import DistributionNotFound, get_distribution
 
 import actinia_metadata_plugin
 from actinia_metadata_plugin.main import app
@@ -42,7 +41,7 @@ class AppTest(unittest.TestCase):
         app.testing = True
         self.app = app.test_client()
 
-        resp = self.app.get('/')
+        resp = self.app.get("/")
         assert type(resp) is Response
 
     def test_app_responding(self):
@@ -51,7 +50,7 @@ class AppTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        resp = self.app.get('/')
+        resp = self.app.get("/")
 
         assert resp.status_code == respStatusCode
 
@@ -61,7 +60,7 @@ class AppTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        resp = self.app.get('/index.html')
+        resp = self.app.get("/index.html")
 
         assert resp.status_code == respStatusCode
 
@@ -70,12 +69,12 @@ class initTest(unittest.TestCase):
 
     def test_init(self):
         # TODO: apply to __init__.py
-        pkg_version = get_distribution('actinia_metadata_plugin.wsgi').version
+        pkg_version = get_distribution("actinia_metadata_plugin.wsgi").version
         assert actinia_metadata_plugin.__version__ == pkg_version
 
         with pytest.raises(DistributionNotFound):
-            v = get_distribution('false_distro_name').version
-            assert v == 'unknown'
+            v = get_distribution("false_distro_name").version
+            assert v == "unknown"
 
 
 class swaggerTest(unittest.TestCase):
@@ -84,9 +83,9 @@ class swaggerTest(unittest.TestCase):
         app.testing = True
         self.app = app.test_client()
 
-        resp = self.app.get(f'{URL_PREFIX}/swagger.json')
+        resp = self.app.get(f"{URL_PREFIX}/swagger.json")
         respData = json.loads(resp.get_data(as_text=True))
 
         assert type(resp) is Response
         assert type(respData) == dict
-        assert respData["info"]["title"] == 'actinia-metadata-plugin'
+        assert respData["info"]["title"] == "actinia-metadata-plugin"
