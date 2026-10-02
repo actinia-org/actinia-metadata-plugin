@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -14,9 +12,9 @@ __license__ = "Apache-2.0"
 
 
 import json
+from xml.dom.minidom import parseString
 
 import xmltodict
-from xml.dom.minidom import parseString
 
 from actinia_metadata_plugin.model.geodata import GeodataMeta
 from actinia_metadata_plugin.resources.logging import log
@@ -28,7 +26,7 @@ def makeItJson(xml):
         records = json.dumps(parsedresp)
         return records
     except Exception:
-        log.error('Error parsing XML response from gnos')
+        log.error("Error parsing XML response from gnos")
         return None
 
 
@@ -37,54 +35,49 @@ def makeItXml(jsonDict):
         records = xmltodict.unparse(jsonDict)
         return records
     except Exception:
-        log.error('Error converting json back to xml')
+        log.error("Error converting json back to xml")
         return None
 
 
 def getRecordRoot(record):
-    """ Method to get one record out of the geonetwork response. Valid for
+    """Method to get one record out of the geonetwork response. Valid for
     both schemata 'gmd:MD_Metadata' and 'csw:Record'
 
     TODO: support more than one tag in response
 
     This method can handle GetRecordByIdResponse and GetRecordsResponse
     """
-
     record = json.loads(record)
 
-    if 'csw:GetRecordByIdResponse' in record:
+    if "csw:GetRecordByIdResponse" in record:
         log.info("Found 1 record")
 
-        if 'gmd:MD_Metadata' in record["csw:GetRecordByIdResponse"]:
-            recordRoot = (
-                record["csw:GetRecordByIdResponse"]["gmd:MD_Metadata"]
-            )
-        elif 'csw:Record' in record["csw:GetRecordByIdResponse"]:
-            recordRoot = (
-                record["csw:GetRecordByIdResponse"]["csw:Record"]
-            )
+        if "gmd:MD_Metadata" in record["csw:GetRecordByIdResponse"]:
+            recordRoot = record["csw:GetRecordByIdResponse"]["gmd:MD_Metadata"]
+        elif "csw:Record" in record["csw:GetRecordByIdResponse"]:
+            recordRoot = record["csw:GetRecordByIdResponse"]["csw:Record"]
         else:
             log.info("...But record is empty")
-            return
+            return None
 
-    elif 'csw:GetRecordsResponse' in record:
+    elif "csw:GetRecordsResponse" in record:
 
-        if 'csw:SearchResults' in record["csw:GetRecordsResponse"]:
-            searchResults = (
-                record["csw:GetRecordsResponse"]["csw:SearchResults"]
-            )
+        if "csw:SearchResults" in record["csw:GetRecordsResponse"]:
+            searchResults = record["csw:GetRecordsResponse"][
+                "csw:SearchResults"
+            ]
 
         else:
             log.info("...But record is empty")
-            return
+            return None
 
         numberOfRecords = int(searchResults["@numberOfRecordsReturned"])
         recordRoot = dict()
 
         if numberOfRecords == 0:
             log.warning("No records found")
-            return
-        elif numberOfRecords == 1:
+            return None
+        if numberOfRecords == 1:
             log.info("Found 1 record")
             recordRoot = searchResults["gmd:MD_Metadata"]
             if not recordRoot:
@@ -97,7 +90,7 @@ def getRecordRoot(record):
 
     else:
         print("Could not parse GNOS response")
-        return
+        return None
 
     return recordRoot
 
@@ -109,8 +102,8 @@ def getUuidByRecordRoot(recordRoot):
         if not uuid:
             uuid = recordRoot["dc:identifier"]
     except Exception:
-        log.warning('Could not set uuid')
-        uuid = 'null'
+        log.warning("Could not set uuid")
+        uuid = "null"
 
     return uuid
 
@@ -118,34 +111,28 @@ def getUuidByRecordRoot(recordRoot):
 def getBboxByRecordRoot(recordRoot):
 
     try:
-        recordExtent = (
-            recordRoot["gmd:identificationInfo"]
-            ["gmd:MD_DataIdentification"]["gmd:extent"]
-        )
+        recordExtent = recordRoot["gmd:identificationInfo"][
+            "gmd:MD_DataIdentification"
+        ]["gmd:extent"]
 
         def parseExtent(bboxRoot):
             bbox_a = bboxRoot["gmd:eastBoundLongitude"]["gco:Decimal"]
             bbox_b = bboxRoot["gmd:southBoundLatitude"]["gco:Decimal"]
             bbox_c = bboxRoot["gmd:westBoundLongitude"]["gco:Decimal"]
             bbox_d = bboxRoot["gmd:northBoundLatitude"]["gco:Decimal"]
-            bbox = [
-                float(bbox_a),
-                float(bbox_b),
-                float(bbox_c),
-                float(bbox_d)
-            ]
+            bbox = [float(bbox_a), float(bbox_b), float(bbox_c), float(bbox_d)]
             return bbox
 
         if type(recordExtent) is list:
             for i in recordExtent:
-                if 'gmd:geographicElement' in i["gmd:EX_Extent"]:
+                if "gmd:geographicElement" in i["gmd:EX_Extent"]:
 
                     geoEl = i["gmd:EX_Extent"]["gmd:geographicElement"]
 
                     if type(geoEl) is list:
                         bbox = []
                         for i in geoEl:
-                            if 'gmd:EX_GeographicBoundingBox' in i:
+                            if "gmd:EX_GeographicBoundingBox" in i:
                                 bboxRoot = i["gmd:EX_GeographicBoundingBox"]
                                 bbox = parseExtent(bboxRoot)
 
@@ -157,18 +144,17 @@ def getBboxByRecordRoot(recordRoot):
             bbox = []
 
     except Exception:
-        log.warning('Could not set bbox')
+        log.warning("Could not set bbox")
         bbox = []
 
     return bbox
 
 
 def parseMeta(recordXml):
-    """ Method to parse record from geonetwork with schema 'gmd' with model
+    """Method to parse record from geonetwork with schema 'gmd' with model
 
     This method can handle GetRecordByIdResponse and GetRecordsResponse
     """
-
     record = makeItJson(recordXml)
 
     if record is None:
@@ -181,48 +167,47 @@ def parseMeta(recordXml):
     bbox = getBboxByRecordRoot(recordRoot)
 
     try:
-        table = (
-            recordRoot["gmd:distributionInfo"]["gmd:MD_Distribution"]
-            ["gmd:transferOptions"]["gmd:MD_DigitalTransferOptions"]
-            ["gmd:onLine"]["gmd:CI_OnlineResource"]["gmd:linkage"]["gmd:URL"]
-        )
+        table = recordRoot["gmd:distributionInfo"]["gmd:MD_Distribution"][
+            "gmd:transferOptions"
+        ]["gmd:MD_DigitalTransferOptions"]["gmd:onLine"][
+            "gmd:CI_OnlineResource"
+        ][
+            "gmd:linkage"
+        ][
+            "gmd:URL"
+        ]
     except Exception:
-        log.warning('Could not set table')
-        table = 'null'
+        log.warning("Could not set table")
+        table = "null"
 
     try:
-        format = (
-            recordRoot["gmd:distributionInfo"]["gmd:MD_Distribution"]
-            ["gmd:distributionFormat"]["gmd:MD_Format"]["gmd:name"]
-            ["gco:CharacterString"]
-        )
+        format = recordRoot["gmd:distributionInfo"]["gmd:MD_Distribution"][
+            "gmd:distributionFormat"
+        ]["gmd:MD_Format"]["gmd:name"]["gco:CharacterString"]
     except Exception:
-        log.warning('Could not set format')
-        format = 'null'
+        log.warning("Could not set format")
+        format = "null"
 
     try:
-        featureCatalogUuid = (
-            recordRoot["gmd:contentInfo"]["gmd:MD_FeatureCatalogueDescription"]
-            ["gmd:featureCatalogueCitation"]["@uuidref"]
-        )
+        featureCatalogUuid = recordRoot["gmd:contentInfo"][
+            "gmd:MD_FeatureCatalogueDescription"
+        ]["gmd:featureCatalogueCitation"]["@uuidref"]
     except Exception:
-        log.warning('Could not set featureCatalogUuid')
-        featureCatalogUuid = 'null'
+        log.warning("Could not set featureCatalogUuid")
+        featureCatalogUuid = "null"
 
     try:
-        crs = (
-            recordRoot['gmd:referenceSystemInfo']['gmd:MD_ReferenceSystem']
-            ['gmd:referenceSystemIdentifier']['gmd:RS_Identifier']['gmd:code']
-            ['gco:CharacterString']
-        )
+        crs = recordRoot["gmd:referenceSystemInfo"]["gmd:MD_ReferenceSystem"][
+            "gmd:referenceSystemIdentifier"
+        ]["gmd:RS_Identifier"]["gmd:code"]["gco:CharacterString"]
     except Exception:
-        log.warning('Could not set crs')
-        crs = 'null'
+        log.warning("Could not set crs")
+        crs = "null"
 
     # TODO: write parsing function if we need to find id column for processing
     # of materialized views
     try:
-        log.warning('Feature Catalog UUID is: ' + featureCatalogUuid)
+        log.warning("Feature Catalog UUID is: " + featureCatalogUuid)
         # featRec = getRecordByUUID(featureCatalogUuid)
         # featRecDict = json.loads(featRec)
         # featRecRoot = featRecDict['csw:GetRecordByIdResponse']['csw:Record']
@@ -232,39 +217,34 @@ def parseMeta(recordXml):
         #         featCatalogIdColumn = i
         # log.warning('Feature Catalog ID column is: ' + featCatalogIdColumn)
     except Exception:
-        log.warning('Could not set featCatalogIdColumn from CatalogUuid')
+        log.warning("Could not set featCatalogIdColumn from CatalogUuid")
 
     geodata_meta = GeodataMeta(
-        uuid=uuid,
-        bbox=bbox,
-        crs=crs,
-        table=table,
-        format=format
+        uuid=uuid, bbox=bbox, crs=crs, table=table, format=format,
     )
 
     return geodata_meta
 
 
 def parseMetaCsw(record):
-    """ Method to parse record from geonetwork with standart output schema
+    """Method to parse record from geonetwork with standart output schema
     'csw' with model. Not used here, we use gmd schema
 
     TODO: better error handling when attribute not found
 
     This method can handle GetRecordByIdResponse and GetRecordsResponse
     """
-
     recordRoot = getRecordRoot(record)
 
     uuid = getUuidByRecordRoot(recordRoot)
 
-    if 'ows:BoundingBox' in recordRoot:
+    if "ows:BoundingBox" in recordRoot:
         recordBbox = recordRoot["ows:BoundingBox"]
 
-        if 'ows:LowerCorner' in recordBbox:
+        if "ows:LowerCorner" in recordBbox:
             bbox_lower = recordBbox["ows:LowerCorner"]
 
-        if 'ows:UpperCorner' in recordBbox:
+        if "ows:UpperCorner" in recordBbox:
             bbox_upper = recordBbox["ows:UpperCorner"]
 
         bbox_a = float(bbox_lower.split(" ")[0])
@@ -273,13 +253,13 @@ def parseMetaCsw(record):
         bbox_d = float(bbox_upper.split(" ")[1])
         bbox = [bbox_a, bbox_b, bbox_c, bbox_d]
 
-        if '@crs' in recordBbox:
+        if "@crs" in recordBbox:
             crs = recordBbox["@crs"]
     else:
         bbox = []
-        crs = 'null'
+        crs = "null"
 
-    if 'dc:URI' in recordRoot:
+    if "dc:URI" in recordRoot:
         recordUri = recordRoot["dc:URI"]
         if type(recordUri) is dict:
             if "#text" in recordUri:
@@ -287,20 +267,16 @@ def parseMetaCsw(record):
         else:
             table = recordUri[0]["#text"]
     else:
-        table = 'null'
+        table = "null"
 
-    if 'dc:format' in recordRoot:
+    if "dc:format" in recordRoot:
         # TODO: find out why it is listed two times and if it can differ
         format = recordRoot["dc:format"][0]
     else:
-        format = 'null'
+        format = "null"
 
     geodata_meta = GeodataMeta(
-        uuid=uuid,
-        bbox=bbox,
-        crs=crs,
-        table=table,
-        format=format
+        uuid=uuid, bbox=bbox, crs=crs, table=table, format=format,
     )
 
     return geodata_meta
@@ -309,32 +285,31 @@ def parseMetaCsw(record):
 def updateXml(response, utcnow):
 
     try:
-        doc = parseString(response.decode('utf-8'))
-        recordNode = doc.getElementsByTagName('gmd:MD_Metadata')[0]
+        doc = parseString(response.decode("utf-8"))
+        recordNode = doc.getElementsByTagName("gmd:MD_Metadata")[0]
 
-        dateStampEl = recordNode.getElementsByTagName('gmd:dateStamp')[0]
-        dateEl = dateStampEl.getElementsByTagName('gco:Date')
+        dateStampEl = recordNode.getElementsByTagName("gmd:dateStamp")[0]
+        dateEl = dateStampEl.getElementsByTagName("gco:Date")
         if len(dateEl) == 0:
-            dateEl = dateStampEl.getElementsByTagName('gco:DateTime')
+            dateEl = dateStampEl.getElementsByTagName("gco:DateTime")
             if len(dateEl) == 0:
-                log.error('Could not find date element')
+                log.error("Could not find date element")
                 return None
-            else:
-                dateEl = dateEl[0]
+            dateEl = dateEl[0]
 
         else:
             dateEl = dateEl[0]
-            utcnow = utcnow.split('T')[0]
+            utcnow = utcnow.split("T")[0]
 
         if dateEl.firstChild.nodeType != dateEl.TEXT_NODE:
             raise Exception("node does not contain text")
 
         dateEl.firstChild.replaceWholeText(utcnow)
 
-        record = recordNode.toxml().replace('\n', '')
+        record = recordNode.toxml().replace("\n", "")
 
     except Exception as e:
-        log.error('Could not set date in metadata record')
+        log.error("Could not set date in metadata record")
         log.error(e)
         return None
 

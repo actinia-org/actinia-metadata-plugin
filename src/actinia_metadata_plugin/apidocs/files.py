@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -13,18 +11,18 @@ __copyright__ = "2018-2025 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-from actinia_metadata_plugin.model.responseModels import SimpleStatusCodeResponseModel
+from actinia_metadata_plugin.model.responseModels import (
+    SimpleStatusCodeResponseModel,
+)
 
 upload_post_docs = {
     "summary": "Upload file.",
     "description": "File can be uploaded, best used with https://bmvimetadaten.mundialis.de.",
-    "tags": [
-        "File Management"
-    ],
+    "tags": ["File Management"],
     "responses": {
         "200": {
             "description": "Success or failure of connection",
-            "schema": SimpleStatusCodeResponseModel
-        }
-    }
+            "schema": SimpleStatusCodeResponseModel,
+        },
+    },
 }

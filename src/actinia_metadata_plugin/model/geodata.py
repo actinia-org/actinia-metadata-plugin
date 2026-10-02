@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -13,7 +11,7 @@ __copyright__ = "2018-2025 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-from jsonmodels import models, fields
+from jsonmodels import fields, models
 
 
 class GeodataMeta(models.Base):
@@ -21,6 +19,7 @@ class GeodataMeta(models.Base):
 
     This object contains the metadata from GNOS
     """
+
     uuid = fields.StringField()  # string
     bbox = fields.ListField([int, float])  # bbox array
     crs = fields.StringField()  # string

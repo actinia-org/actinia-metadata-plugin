@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -13,18 +11,20 @@ __copyright__ = "2018-2025 mundialis GmbH & Co. KG"
 __license__ = "Apache-2.0"
 
 
-import unittest
 import json
+import unittest
+
 from flask import Response
 
-from actinia_metadata_plugin.main import app
-
-from actinia_metadata_plugin.core.gnosReader import getRecordsByCategory
-from actinia_metadata_plugin.core.gnosReader import getRecordByUUID
-from actinia_metadata_plugin.core.gnosReader import getRecordsByTags
-from actinia_metadata_plugin.core.gnosReader import getMetaByUUID
-from actinia_metadata_plugin.core.gnosReader import getMetaByTags
 from actinia_metadata_plugin.core.gnosParser import parseMeta
+from actinia_metadata_plugin.core.gnosReader import (
+    getMetaByTags,
+    getMetaByUUID,
+    getRecordByUUID,
+    getRecordsByCategory,
+    getRecordsByTags,
+)
+from actinia_metadata_plugin.main import app
 from actinia_metadata_plugin.model.geodata import GeodataMeta
 
 
@@ -37,7 +37,7 @@ class GnosApiTest(unittest.TestCase):
         respStatusCode = 200
         # respData = '{"status": "success"}'
 
-        resp = self.app.get('/metadata/test/connection')
+        resp = self.app.get("/metadata/test/connection")
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -49,7 +49,7 @@ class GnosApiTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        resp = self.app.post('/metadata/test/connection')
+        resp = self.app.post("/metadata/test/connection")
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -60,7 +60,7 @@ class GnosApiTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        resp = self.app.get('/metadata/raw/tags/Eurasia')
+        resp = self.app.get("/metadata/raw/tags/Eurasia")
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -71,7 +71,7 @@ class GnosApiTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        resp = self.app.get('/metadata/raw/categories/mfg')
+        resp = self.app.get("/metadata/raw/categories/mfg")
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -82,9 +82,9 @@ class GnosApiTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        testUuid = 'da165110-88fd-11da-a88f-000d939bc5d8'
+        testUuid = "da165110-88fd-11da-a88f-000d939bc5d8"
 
-        resp = self.app.get('/metadata/raw/uuids/' + testUuid)
+        resp = self.app.get("/metadata/raw/uuids/" + testUuid)
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -95,7 +95,7 @@ class GnosApiTest(unittest.TestCase):
 
         respStatusCode = 200
 
-        resp = self.app.get('/metadata/geodata/tags/Eurasia')
+        resp = self.app.get("/metadata/geodata/tags/Eurasia")
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -107,7 +107,8 @@ class GnosApiTest(unittest.TestCase):
         respStatusCode = 200
 
         resp = self.app.get(
-            '/metadata/geodata/uuids/da165110-88fd-11da-a88f-000d939bc5d8')
+            "/metadata/geodata/uuids/da165110-88fd-11da-a88f-000d939bc5d8",
+        )
 
         assert type(resp) is Response
         assert resp.status_code == respStatusCode
@@ -123,7 +124,7 @@ class GnosCoreTest(unittest.TestCase):
     #     assert checkConnection() is False
 
     def test_getRecordsByTags(self):
-        records = getRecordsByTags('Eurasia')
+        records = getRecordsByTags("Eurasia")
         recordsAsDict = json.loads(records)
 
         assert type(records) == str
@@ -131,7 +132,7 @@ class GnosCoreTest(unittest.TestCase):
         assert type(recordsAsDict["csw:GetRecordsResponse"]) == dict
 
     def test_getRecordsByCategory(self):
-        records = getRecordsByCategory('mfg')
+        records = getRecordsByCategory("mfg")
         recordsAsDict = json.loads(records)
 
         assert type(records) == str
@@ -139,7 +140,7 @@ class GnosCoreTest(unittest.TestCase):
         assert type(recordsAsDict["csw:GetRecordsResponse"]) == dict
 
     def test_getRecordByUUID(self):
-        records = getRecordByUUID('da165110-88fd-11da-a88f-000d939bc5d8')
+        records = getRecordByUUID("da165110-88fd-11da-a88f-000d939bc5d8")
         recordsAsDict = json.loads(records)
 
         assert type(records) == str
@@ -147,19 +148,19 @@ class GnosCoreTest(unittest.TestCase):
         assert type(recordsAsDict["csw:GetRecordByIdResponse"]) == dict
 
     def test_getMetaByUUID(self):
-        geodata_meta = getMetaByUUID('da165110-88fd-11da-a88f-000d939bc5d8')
+        geodata_meta = getMetaByUUID("da165110-88fd-11da-a88f-000d939bc5d8")
         assert type(geodata_meta) == GeodataMeta
 
     def test_getMetaByTags_1(self):
-        geodata_meta = getMetaByTags('Eurasia')  # 1
+        geodata_meta = getMetaByTags("Eurasia")  # 1
         assert type(geodata_meta) == GeodataMeta
 
     def test_getMetaByTags_2(self):
-        geodata_meta = getMetaByTags('*')  # 2
+        geodata_meta = getMetaByTags("*")  # 2
         assert type(geodata_meta) == GeodataMeta
 
     def test_getMetaByTags_0(self):
-        geodata_meta = getMetaByTags('eura')  # 0
+        geodata_meta = getMetaByTags("eura")  # 0
         assert geodata_meta is None
 
     def test_parseMeta(self):

@@ -13,6 +13,13 @@ jobs:
       # set pylint-version to empty string to skip the pylint workflow
       pylint-version: ''
       BASH_SEVERITY: 'warning'
+      VALIDATE_JSON: false
+      VALIDATE_HTML: false
+      VALIDATE_CSS: false
+      VALIDATE_JAVASCRIPT_ES: false
+      VALIDATE_MARKDOWN: false
+      VALIDATE_XML: false
+      VALIDATE_YAML: false
     permissions:
       contents: read
       packages: read

@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
+"""SPDX-FileCopyrightText: (c) 2018-2025 mundialis GmbH & Co. KG
 
 SPDX-License-Identifier: Apache-2.0
 
@@ -15,42 +13,38 @@ __license__ = "Apache-2.0"
 
 # import os
 
+from xml.dom.minidom import parseString
+
 import requests
 import xmltodict
-from xml.dom.minidom import parseString
 
 from actinia_metadata_plugin.api.common import checkConnectionWithoutResponse
 from actinia_metadata_plugin.core.common import auth
-from actinia_metadata_plugin.core.gnosReader import getRecordByUUID
 from actinia_metadata_plugin.core.gnosParser import updateXml
+from actinia_metadata_plugin.core.gnosReader import getRecordByUUID
 from actinia_metadata_plugin.resources.config import GEONETWORK
+
 # from actinia_metadata_plugin.resources.config import FILEUPLOAD
 from actinia_metadata_plugin.resources.logging import log
 from actinia_metadata_plugin.resources.templating import tplEnv
 
 
 def create(filename):
-    """ Method to get create metadata records in geonetwork
-
-    """
-
+    """Method to get create metadata records in geonetwork"""
     url = GEONETWORK.csw_publication
-    recordtpl = tplEnv.get_template('geonetwork/template_metadaten.xml')
-    record = recordtpl.render(title=filename).replace('\n', '')
+    recordtpl = tplEnv.get_template("geonetwork/template_metadaten.xml")
+    record = recordtpl.render(title=filename).replace("\n", "")
     # recordfs = recordtpl.render(title=filename)
-    postbodytpl = tplEnv.get_template('geonetwork/post_create_record.xml')
-    postbody = postbodytpl.render(metadata_record=record).replace('\n', '')
+    postbodytpl = tplEnv.get_template("geonetwork/post_create_record.xml")
+    postbody = postbodytpl.render(metadata_record=record).replace("\n", "")
     # postbodyfs = postbodytpl.render(metadata_record=recordfs)
-    headers = {'content-type': 'application/xml; charset=utf-8'}
+    headers = {"content-type": "application/xml; charset=utf-8"}
 
-    log.info('Creating metadata record')
+    log.info("Creating metadata record")
 
     try:
         gnosresp = requests.post(
-            url,
-            data=postbody,
-            headers=headers,
-            auth=auth(GEONETWORK)
+            url, data=postbody, headers=headers, auth=auth(GEONETWORK),
         )
 
     except requests.exceptions.ConnectionError:
@@ -67,30 +61,28 @@ def create(filename):
 
     try:
         parsedresp = xmltodict.parse(gnosresp.content)
-        insertRes = parsedresp['csw:TransactionResponse']['csw:InsertResult']
-        uuid = insertRes['csw:BriefRecord']['identifier']
-        log.info('GNOS response is: ' + str(parsedresp))
+        insertRes = parsedresp["csw:TransactionResponse"]["csw:InsertResult"]
+        uuid = insertRes["csw:BriefRecord"]["identifier"]
+        log.info("GNOS response is: " + str(parsedresp))
         return uuid
     except Exception:
         return None
 
 
 def update(uuid, utcnow):
-    """ Method to update record in geonetwork
-    """
-
-    connection = checkConnectionWithoutResponse('geonetwork')
+    """Method to update record in geonetwork"""
+    connection = checkConnectionWithoutResponse("geonetwork")
     if connection is None:
-        log.error('Not updating metadata for uuid ' + uuid)
+        log.error("Not updating metadata for uuid " + uuid)
         return None
 
     try:
         response = getRecordByUUID(uuid)
-        doc = parseString(response.decode('utf-8'))
-        recordNode = doc.getElementsByTagName('gmd:MD_Metadata')[0]
-        log.debug('Found metadata for ' + uuid + ', ' + str(recordNode))
+        doc = parseString(response.decode("utf-8"))
+        recordNode = doc.getElementsByTagName("gmd:MD_Metadata")[0]
+        log.debug("Found metadata for " + uuid + ", " + str(recordNode))
     except Exception:
-        log.error('Could not find metadata record to update for uuid ' + uuid)
+        log.error("Could not find metadata record to update for uuid " + uuid)
         return None
 
     record = updateXml(response, utcnow)
@@ -99,35 +91,34 @@ def update(uuid, utcnow):
 
     try:
         url = GEONETWORK.csw_pub
-        postbodytpl = tplEnv.get_template('geonetwork/post_update_record.xml')
+        postbodytpl = tplEnv.get_template("geonetwork/post_update_record.xml")
         postbody = postbodytpl.render(
-            metadata_record=record,
-            uuid=uuid
-        ).replace('\n', '')
-        headers = {'content-type': 'application/xml; charset=utf-8'}
+            metadata_record=record, uuid=uuid,
+        ).replace("\n", "")
+        headers = {"content-type": "application/xml; charset=utf-8"}
 
     except Exception as e:
-        log.error('Could not set needed variable')
+        log.error("Could not set needed variable")
         log.error(e)
         return None
 
     try:
-        log.info('Updating metadata record')
+        log.info("Updating metadata record")
         gnosresp = requests.post(
             url,
-            data=bytes(postbody, 'utf-8'),
+            data=bytes(postbody, "utf-8"),
             headers=headers,
-            auth=auth(GEONETWORK)
+            auth=auth(GEONETWORK),
         )
 
-        if '<html>' in gnosresp.content.decode('utf-8'):
-            log.error('update error')
+        if "<html>" in gnosresp.content.decode("utf-8"):
+            log.error("update error")
         else:
-            log.info('update success')
+            log.info("update success")
 
         return gnosresp
     except requests.exceptions.ConnectionError:
-        log.error('Could not connect to gnos')
+        log.error("Could not connect to gnos")
         return None
     except Exception as e:
         log.error(e)
