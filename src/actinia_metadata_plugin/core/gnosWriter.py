@@ -44,7 +44,10 @@ def create(filename):
 
     try:
         gnosresp = requests.post(
-            url, data=postbody, headers=headers, auth=auth(GEONETWORK),
+            url,
+            data=postbody,
+            headers=headers,
+            auth=auth(GEONETWORK),
         )
 
     except requests.exceptions.ConnectionError:
@@ -93,7 +96,8 @@ def update(uuid, utcnow):
         url = GEONETWORK.csw_pub
         postbodytpl = tplEnv.get_template("geonetwork/post_update_record.xml")
         postbody = postbodytpl.render(
-            metadata_record=record, uuid=uuid,
+            metadata_record=record,
+            uuid=uuid,
         ).replace("\n", "")
         headers = {"content-type": "application/xml; charset=utf-8"}
 

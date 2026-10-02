@@ -46,7 +46,10 @@ def getRecordsByTags(tags):
 
     try:
         gnosresp = requests.post(
-            url, data=postbody, headers=headers, auth=auth(GEONETWORK),
+            url,
+            data=postbody,
+            headers=headers,
+            auth=auth(GEONETWORK),
         )
         return gnosresp.content
     except requests.exceptions.ConnectionError:

@@ -39,7 +39,8 @@ class Upload(Resource):
     def get(self):
         res = jsonify(
             SimpleStatusCodeResponseModel(
-                status=405, message="Method Not Allowed",
+                status=405,
+                message="Method Not Allowed",
             ),
         )
         return make_response(res, 405)

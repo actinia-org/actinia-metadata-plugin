@@ -220,7 +220,11 @@ def parseMeta(recordXml):
         log.warning("Could not set featCatalogIdColumn from CatalogUuid")
 
     geodata_meta = GeodataMeta(
-        uuid=uuid, bbox=bbox, crs=crs, table=table, format=format,
+        uuid=uuid,
+        bbox=bbox,
+        crs=crs,
+        table=table,
+        format=format,
     )
 
     return geodata_meta
@@ -276,7 +280,11 @@ def parseMetaCsw(record):
         format = "null"
 
     geodata_meta = GeodataMeta(
-        uuid=uuid, bbox=bbox, crs=crs, table=table, format=format,
+        uuid=uuid,
+        bbox=bbox,
+        crs=crs,
+        table=table,
+        format=format,
     )
 
     return geodata_meta

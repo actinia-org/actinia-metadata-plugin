@@ -32,7 +32,8 @@ class SimpleStatusCodeResponseModel(Schema):
 
 
 simpleResponseExample = SimpleStatusCodeResponseModel(
-    status=200, message="success",
+    status=200,
+    message="success",
 )
 SimpleStatusCodeResponseModel.example = simpleResponseExample
 
